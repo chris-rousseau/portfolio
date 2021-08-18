@@ -1,4 +1,10 @@
 {
+    "abraham/twitteroauth": {
+        "version": "3.1.0"
+    },
+    "composer/ca-bundle": {
+        "version": "1.2.10"
+    },
     "composer/package-versions-deprecated": {
         "version": "1.11.99.2"
     },
@@ -99,6 +105,9 @@
     },
     "nikic/php-parser": {
         "version": "v4.12.0"
+    },
+    "nojimage/twitter-text-php": {
+        "version": "v3.1.2"
     },
     "phar-io/manifest": {
         "version": "2.0.3"

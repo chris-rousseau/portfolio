@@ -1,0 +1,13 @@
+<div class="social">
+	<div class="twitter">
+		<a href="https://twitter.com/Kuliissu" target="_blank">
+			<img src="{{ asset('/assets/img/twitter.png') }}" alt="Logo Twitter">
+			<p>@Kuliissu</p>
+		</a>
+	</div>
+	<aside>
+		{% for tweet in twitter.tweets|slice(0, 5) %}
+			<p>{{ tweet.full_text }}</p>
+		{% endfor %}
+	</aside>
+</div>

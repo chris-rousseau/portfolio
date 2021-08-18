@@ -2,6 +2,7 @@
 
 namespace App\Controller\Blog;
 
+use Abraham\TwitterOAuth\TwitterOAuth;
 use App\Repository\BlogPostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,8 +18,9 @@ class MainController extends AbstractController
      */
     public function index(BlogPostRepository $blogPostRepository): Response
     {
-        $allPosts = $blogPostRepository->findAll();
-        // dd($allPosts);
+        $allPosts = $blogPostRepository->findBy([], [
+            'created_at' => 'DESC'
+        ]);
 
         return $this->render('blog/main/index.html.twig', [
             'allPosts' => $allPosts,
