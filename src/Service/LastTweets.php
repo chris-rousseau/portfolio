@@ -22,7 +22,7 @@ class LastTweets
         return $tweets;
     }
 
-    public function autolink()
+    public function link()
     {
         $autoLink = \Twitter\Text\Autolink::create();
 

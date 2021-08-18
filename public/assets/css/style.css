@@ -227,7 +227,7 @@ form button {
 }
 
 .read-next::after {
-    content: "→";
+    content: ">";
     color: #e7e7e7;
 }
 

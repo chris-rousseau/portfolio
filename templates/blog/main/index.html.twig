@@ -11,7 +11,7 @@
 				<h2>
 					<a href="#">{{ post.title }}</a>
 				</h2>
-				{{ post.content }}
+				{{ post.content|raw }}
 			</article>
 			<div class="read-plus">
 				<div class="read-next">
@@ -19,7 +19,7 @@
 				</div>
 				<div class="info-article">le
 					<strong>
-						{{ post.createdAt|date("l d F") }}</strong>, dans
+						{{ post.createdAt|format_datetime('full', 'none', locale='fr') }}</strong>, dans
 					<a href="#">{{ post.category.name }}</a>
 				</div>
 			</div>

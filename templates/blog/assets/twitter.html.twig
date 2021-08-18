@@ -7,7 +7,7 @@
 	</div>
 	<aside>
 		{% for tweet in twitter.tweets|slice(0, 5) %}
-			<p>{{ tweet.full_text }}</p>
+			<p>{{ twitter.link.autolink(tweet.full_text)|raw }}</p>
 		{% endfor %}
 	</aside>
 </div>
