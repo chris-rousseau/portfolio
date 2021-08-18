@@ -45,7 +45,7 @@ class BlogCategory
     private $slug;
 
     /**
-     * @ORM\ManyToMany(targetEntity=BlogPost::class, mappedBy="category")
+     * @ORM\OneToMany(targetEntity=BlogPost::class, mappedBy="category")
      */
     private $blogPosts;
 
@@ -131,7 +131,7 @@ class BlogCategory
     {
         if (!$this->blogPosts->contains($blogPost)) {
             $this->blogPosts[] = $blogPost;
-            $blogPost->addCategory($this);
+            $blogPost->setCategory($this);
         }
 
         return $this;
@@ -140,7 +140,10 @@ class BlogCategory
     public function removeBlogPost(BlogPost $blogPost): self
     {
         if ($this->blogPosts->removeElement($blogPost)) {
-            $blogPost->removeCategory($this);
+            // set the owning side to null (unless already changed)
+            if ($blogPost->getCategory() === $this) {
+                $blogPost->setCategory(null);
+            }
         }
 
         return $this;

@@ -61,14 +61,14 @@ class BlogPost
     private $blogComments;
 
     /**
-     * @ORM\ManyToMany(targetEntity=BlogCategory::class, inversedBy="blogPosts")
+     * @ORM\ManyToOne(targetEntity=BlogCategory::class, inversedBy="blogPosts")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $category;
 
     public function __construct()
     {
         $this->blogComments = new ArrayCollection();
-        $this->category = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -148,14 +148,14 @@ class BlogPost
         return $this;
     }
 
-    public function getUserId(): ?User
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUserId(?User $user): self
+    public function setUser(?User $user): self
     {
-        $this->user_id = $user;
+        $this->user = $user;
 
         return $this;
     }
@@ -190,26 +190,14 @@ class BlogPost
         return $this;
     }
 
-    /**
-     * @return Collection|BlogCategory[]
-     */
-    public function getCategory(): Collection
+    public function getCategory(): ?BlogCategory
     {
         return $this->category;
     }
 
-    public function addCategory(BlogCategory $category): self
+    public function setCategory(?BlogCategory $category): self
     {
-        if (!$this->category->contains($category)) {
-            $this->category[] = $category;
-        }
-
-        return $this;
-    }
-
-    public function removeCategory(BlogCategory $category): self
-    {
-        $this->category->removeElement($category);
+        $this->category = $category;
 
         return $this;
     }
