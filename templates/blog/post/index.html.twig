@@ -27,7 +27,7 @@
 			<div class="info-article">le
 				<strong>
 					{{ post.createdAt|format_datetime('full', 'none', locale='fr') }}</strong>, dans
-				<a href="#">{{ post.category.name }}</a>
+				<a href="{{ path('blog_category_list', {'slug' : post.category.slug}) }}">{{ post.category.name }}</a>
 			</div>
 		</div>
 		<div class="post-comment">

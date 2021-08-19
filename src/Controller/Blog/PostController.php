@@ -25,7 +25,7 @@ class PostController extends AbstractController
         $allComments = $blogCommentRepository->findBy([
             'post' => $blogPost->getId()
         ], [
-            'created_at' => 'DESC'
+            'created_at' => 'desc'
         ]);
 
         $pagination = $paginator->paginate(
