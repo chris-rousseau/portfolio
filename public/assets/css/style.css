@@ -316,7 +316,33 @@ form button {
 .form-error {
     color: #c96363;
     font-weight: bold;
-    padding: 1em 0;
+    padding: .5em 0;
+}
+
+.container-alert {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 2em;
+}
+
+.alert {
+    position: relative;
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 2rem;
+}
+
+.alert-success {
+    color: #fff;
+    background-color: rgb(67, 116, 79);
+    text-align: center;
+}
+
+.alert-warning {
+    color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
 }
 
 /* -------- Responsive -------- */

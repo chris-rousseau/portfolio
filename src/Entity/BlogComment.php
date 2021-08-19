@@ -3,7 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\BlogCommentRepository;
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=BlogCommentRepository::class)
@@ -19,11 +21,21 @@ class BlogComment
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank(message="Merci de renseigner votre pseudo")
+     * @Assert\Length(
+     *      max = 50,
+     *      maxMessage = "La longueur maximale de votre pseudo doit être de {{ limit }} caractères."
+     * )
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Merci d'ajouter votre message")
+     * @Assert\Length(
+     *      max = 3000,
+     *      maxMessage = "La longueur maximale de votre message doit être de {{ limit }} caractères."
+     * )
      */
     private $content;
 
@@ -42,6 +54,11 @@ class BlogComment
      * @ORM\JoinColumn(nullable=false)
      */
     private $post;
+
+    public function __construct()
+    {
+        $this->created_at = new DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {

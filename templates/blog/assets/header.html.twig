@@ -3,18 +3,18 @@
 		<div class="header-background"></div>
 		<div class="header-background2"></div>
 		<div class="left-logo">
-			<a href="#"><img src="{{ asset('/assets/img/coffee-cup.png') }}" alt="Logo du site (gobelet de café)"></a>
+			<a href="{{ path('blog_index') }}"><img src="{{ asset('/assets/img/coffee-cup.png') }}" alt="Logo du site (gobelet de café)"></a>
 		</div>
 		<div class="right-logo">
 			<p class="text-logo">
-				<a href="#">chris.dev</a>
+				<a href="{{ path('blog_index') }}">chris.dev</a>
 			</p>
 			<p>Du café et des lignes de code</p>
 		</div>
 	</header>
 	<nav>
 		<ul>
-			<li><a href="#">Blog</a></li>
+			<li><ahref="{{path('blog_index')}}">Blog</a></li>
 			<li><a href="#">Portfolio</a></li>
 			<li><a href="#">Contact</a></li>
 		</ul>

@@ -9,13 +9,13 @@
 		{% for post in allPosts %}
 			<article>
 				<h2>
-					<a href="#">{{ post.title }}</a>
+					<a href="{{ path('blog_post_single', {'slug' : post.slug}) }}">{{ post.title }}</a>
 				</h2>
 				{{ post.content|raw }}
 			</article>
 			<div class="read-plus">
 				<div class="read-next">
-					<a href="#">Lire la suite</a>
+					<a href="{{ path('blog_post_single', {'slug' : post.slug}) }}">Lire la suite</a>
 				</div>
 				<div class="info-article">le
 					<strong>

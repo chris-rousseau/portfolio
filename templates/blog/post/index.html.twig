@@ -1,0 +1,65 @@
+{% extends 'base_blog.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	{% for label, messages in app.flashes %}
+		{% for message in messages %}
+			<div class="container-alert">
+				<div class="alert alert-{{ label }}">
+					<i class="far fa-comment"></i>
+					{{ message }}
+				</div>
+			</div>
+		{% endfor %}
+	{% endfor %}
+	<main>
+		<article>
+			<h2>
+				<a href="#">{{ post.title }}</a>
+			</h2>
+			{{ post.content|raw }}
+		</article>
+		<div class="read-plus">
+			<div></div>
+			<div class="info-article">le
+				<strong>
+					{{ post.createdAt|format_datetime('full', 'none', locale='fr') }}</strong>, dans
+				<a href="#">{{ post.category.name }}</a>
+			</div>
+		</div>
+		<div class="post-comment">
+			<h3>Laisser un commentaire</h3>
+			{{ form_start(form) }}
+			{{ form_label(form.name) }}
+			{% if form_errors(form.name) != null %}
+				<div class="form-error">{{ form_errors(form.name) }}</div>
+			{% endif %}
+			{{ form_widget(form.name) }}
+			{{ form_label(form.content) }}
+			{% if form_errors(form.content) != null %}
+				<div class="form-error">{{ form_errors(form.content) }}</div>
+			{% endif %}
+			{{ form_widget(form.content) }}
+			{{ form_end(form) }}
+		</div>
+		{% for comment in allComments %}
+			<div class="comments">
+				<div class="comment-message">
+					<img src="{{ asset('/assets/img/default.png') }}" alt="Avatar par défaut">
+					<div class="user-infos">
+						<div class="username">{{ comment.name }}</div>
+						<div class="comment-date">le
+							{{ comment.createdAt|format_datetime('full', 'none', locale='fr') }}
+						</div>
+					</div>
+				</div>
+				<p>
+					{{ comment.content }}
+				</p>
+			</div>
+		{% endfor %}
+	</main>
+{% endblock %}
