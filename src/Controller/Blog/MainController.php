@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/blog/", name="blog_")
+ * @Route("/blog", name="blog_")
  */
 class MainController extends AbstractController
 {

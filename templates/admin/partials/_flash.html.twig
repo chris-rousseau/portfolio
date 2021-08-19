@@ -1,0 +1,9 @@
+{% for label, messages in app.flashes %}
+	{% for message in messages %}
+		<div class="container mt-3 mx-0">
+			<div class="alert alert-{{ label }}">
+				{{ message }}
+			</div>
+		</div>
+	{% endfor %}
+{% endfor %}
