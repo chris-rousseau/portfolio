@@ -6,12 +6,12 @@
 
 {% block body %}
 	<main>
-		{% for post in allPosts %}
+		{% for post in pagination_article %}
 			<article>
 				<h2>
 					<a href="{{ path('blog_post_single', {'slug' : post.slug}) }}">{{ post.title }}</a>
 				</h2>
-				{{ post.content|raw }}
+				{{ post.content|slice(0, 500)|raw }}...
 			</article>
 			<div class="read-plus">
 				<div class="read-next">
@@ -24,6 +24,9 @@
 				</div>
 			</div>
 		{% endfor %}
+		<div class="navigation">
+			{{ knp_pagination_render(pagination_article) }}
+		</div>
 
 	</main>
 {% endblock %}

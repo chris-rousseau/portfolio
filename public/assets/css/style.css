@@ -345,6 +345,16 @@ form button {
     border-color: #ffecb5;
 }
 
+.navigation nav {
+    position: static;
+    width: 100%;
+}
+
+.pagination {
+    margin: 0 auto;
+    padding: 0;
+}
+
 /* -------- Responsive -------- */
 
 @media (max-width: 22em) {

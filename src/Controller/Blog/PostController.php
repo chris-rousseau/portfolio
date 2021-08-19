@@ -6,6 +6,7 @@ use App\Entity\BlogComment;
 use App\Entity\BlogPost;
 use App\Form\CommentType;
 use App\Repository\BlogCommentRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,13 +20,19 @@ class PostController extends AbstractController
     /**
      * @Route("{slug}", name="single")
      */
-    public function single(Request $request, BlogPost $blogPost, BlogCommentRepository $blogCommentRepository): Response
+    public function single(Request $request, PaginatorInterface $paginator, BlogPost $blogPost, BlogCommentRepository $blogCommentRepository): Response
     {
         $allComments = $blogCommentRepository->findBy([
             'post' => $blogPost->getId()
         ], [
             'created_at' => 'DESC'
         ]);
+
+        $pagination = $paginator->paginate(
+            $allComments,
+            $request->query->getInt('page', 1),
+            5
+        );
 
         $comment = new BlogComment();
         $form = $this->createForm(CommentType::class, $comment);
@@ -50,7 +57,7 @@ class PostController extends AbstractController
 
         return $this->render('blog/post/index.html.twig', [
             'post' => $blogPost,
-            'allComments' => $allComments,
+            'allComments' => $pagination,
             'form' => $form->createView(),
         ]);
     }
