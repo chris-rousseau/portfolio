@@ -1,0 +1,25 @@
+{% extends 'admin_blog.html.twig' %}
+
+{% block title %}Editer un article{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<div class="container px-4 mx-0">
+		<h1 class="mt-4">Editer : {{ post.title }}</h1>
+		<ol class="breadcrumb mb-4">
+			<li class="breadcrumb-item">
+				<a href="{{ path('admin_dashboard') }}">Dashboard</a>
+			</li>
+            <li class="breadcrumb-item active">Blog</li>
+			<li class="breadcrumb-item active">Editer un article</li>
+		</ol>
+		<div class="card mb-4">
+			<div class="card-body">
+				<p class="mb-0">
+					{{ form(form) }}
+				</p>
+				<a class="btn btn-info" href="{{ path('admin_blog_list') }}" role="button"><i class="fas fa-long-arrow-alt-left"></i> Revenir à la liste</a> <a class="btn btn-danger" href="{{ path('admin_blog_delete', {id : post.id}) }}" role="button" onclick="return confirm('Etes-vous sur de vouloir supprimer l\'article ?');"><i class="far fa-trash-alt"></i> Supprimer l'article</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\BlogPostRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -69,6 +70,8 @@ class BlogPost
     public function __construct()
     {
         $this->blogComments = new ArrayCollection();
+        $this->created_at = new DateTimeImmutable();
+        $this->views = 0;
     }
 
     public function getId(): ?int

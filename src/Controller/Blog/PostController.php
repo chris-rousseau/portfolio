@@ -34,6 +34,12 @@ class PostController extends AbstractController
             5
         );
 
+        // add +1 to views count
+        $blogPost->setViews($blogPost->getViews() + 1);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($blogPost);
+        $em->flush();
+
         $comment = new BlogComment();
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
@@ -41,7 +47,6 @@ class PostController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $comment->setPost($blogPost);
 
-            $em = $this->getDoctrine()->getManager();
             $em->persist($comment);
             $em->flush();
 

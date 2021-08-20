@@ -1,0 +1,22 @@
+{% extends 'admin_blog.html.twig' %}
+
+{% block title %}Ajouter un article{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<div class="container px-4 mx-0">
+		<h1 class="mt-4">Ajouter un article</h1>
+		<ol class="breadcrumb mb-4">
+			<li class="breadcrumb-item">
+				<a href="{{ path('admin_dashboard') }}">Dashboard</a>
+			</li>
+            <li class="breadcrumb-item active">Blog</li>
+			<li class="breadcrumb-item active">Ajouter un article</li>
+		</ol>
+		<div class="card mb-4">
+			<div class="card-body">
+				<p class="mb-0">{{ form(form) }}</p>
+			</div>
+		</div>
+	</div>
+{% endblock %}

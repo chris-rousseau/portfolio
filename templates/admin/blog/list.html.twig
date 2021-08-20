@@ -1,0 +1,55 @@
+{% extends 'admin_blog.html.twig' %}
+
+{% block title %}Tous les articles{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<div class="container px-4 mx-0">
+		<h1 class="mt-4">Tous les articles</h1>
+		<ol class="breadcrumb mb-4">
+			<li class="breadcrumb-item">
+				<a href="{{ path('admin_dashboard') }}">Dashboard</a>
+			</li>
+			<li class="breadcrumb-item active">Blog</li>
+			<li class="breadcrumb-item active">Tous les articles</li>
+		</ol>
+		<div class="card mb-4">
+			<div class="card-body">
+				<p class="mb-0">
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">Titre</th>
+									<th scope="col">Categorie</th>
+									<th scope="col">Nb de commentaires</th>
+									<th scope="col">Nombre de vues</th>
+									<th scope="col">Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+							{% for post in allPosts %}
+								<tr>
+									<th scope="row">{{ post.title }}</th>
+									<td>{{ post.category.name }}</td>
+									<td>
+									{% set count = 0 %}
+									{% for comment in allComments %}
+										{% if comment.post.id == post.id %}
+											{%  set count = count + 1 %}
+										{% endif %}
+									{% endfor %}
+									<i class="far fa-comments"></i> {{ count }}
+									</td>
+									<td><i class="far fa-eye"></i> {{ post.views }}</td>
+									<td><a class="btn btn-info" href="{{ path('blog_post_single', {slug : post.slug}) }}" role="button" target="_blank"><i class="far fa-eye"></i> Lire</a> <a class="btn btn-warning" href="{{ path('admin_blog_edit', {id : post.id}) }}" role="button"><i class="far fa-edit"></i> Editer</a></td>
+								</tr>
+							{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</p>
+			</div>
+		</div>
+	</div>
+{% endblock %}
