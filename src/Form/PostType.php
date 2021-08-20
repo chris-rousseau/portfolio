@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\BlogCategory;
 use App\Entity\BlogPost;
 use App\Repository\BlogCategoryRepository;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -38,12 +39,11 @@ class PostType extends AbstractType
                     return $blogCategory ? $blogCategory->getName() : '';
                 },
             ])
-            ->add('content', null, [
+            ->add('content', CKEditorType::class, [
                 'label' => ' ',
                 'attr' => array(
                     'placeholder' => 'Contenu de l\'article'
                 )])
-            ->add('save', SubmitType::class, ['label' => 'Publier l\'article'])
         ;
     }
 

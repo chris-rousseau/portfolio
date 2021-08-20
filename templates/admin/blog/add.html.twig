@@ -15,7 +15,24 @@
 		</ol>
 		<div class="card mb-4">
 			<div class="card-body">
-				<p class="mb-0">{{ form(form) }}</p>
+				<p class="mb-0">
+                {{ form_start(form) }}
+                <div class="article-top">
+                    {{ form_label(form.title) }}
+                    {% if form_errors(form.title) != null %}
+                        <div class="form-error">{{ form_errors(form.title) }}</div>
+                    {% endif %}
+                    {{ form_widget(form.title, { 'attr': {'class': 'input-style'} }) }}
+                    {{ form_widget(form.category, { 'attr': {'class': 'select-style'} }) }}
+                </div>
+                {{ form_label(form.content) }}
+                {% if form_errors(form.content) != null %}
+                    <div class="form-error">{{ form_errors(form.content) }}</div>
+                {% endif %}
+                {{ form_widget(form.content) }}
+                <button type="submit" class="btn btn-success mt-2"><i class="fas fa-check"></i> Publier l'article</button> <a class="btn btn-info mt-2" href="{{ path('admin_blog_list') }}" role="button"><i class="fas fa-long-arrow-alt-left"></i> Revenir à la liste</a>
+                {{ form_end(form) }}
+                </p>
 			</div>
 		</div>
 	</div>
