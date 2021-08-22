@@ -58,3 +58,8 @@
     font-weight: bold;
     padding-left: .8em;
 }
+
+.title-post-comment {
+    font-size: .7em;
+    font-style: italic;
+}

@@ -1,0 +1,34 @@
+{% extends 'admin_blog.html.twig' %}
+
+{% block title %}Tous les commentaires{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<div class="container px-4 mx-0">
+		<h1 class="mt-4">Tous les commentaires</h1>
+		<ol class="breadcrumb mb-4">
+			<li class="breadcrumb-item">
+				<a href="{{ path('admin_dashboard') }}">Dashboard</a>
+			</li>
+			<li class="breadcrumb-item active">Blog</li>
+			<li class="breadcrumb-item active">Tous les commentaires</li>
+		</ol>
+		<div class="card mb-4">
+			<div class="card-body">
+				<div class="row">
+                    {% for comment in allComments %}
+                        <div class="col-sm-6 mb-2">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ comment.name }} <span class="title-post-comment"> - {{ comment.post.title }}</span></h5>
+                                    <p class="card-text">{{ comment.content }}</p>
+                                    <a href="{{ path('admin_comment_delete', {id : comment.id}) }}" class="btn btn-danger" onclick="return confirm('Etes-vous sur de vouloir supprimer l\'article ?');"><i class="far fa-trash-alt"></i> Supprimer</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
