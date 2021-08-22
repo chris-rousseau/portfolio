@@ -43,6 +43,7 @@
 				<div class="form-error">{{ form_errors(form.content) }}</div>
 			{% endif %}
 			{{ form_widget(form.content) }}
+			<button type="submit" class="submit-margin"><i class="fas fa-check"></i> Envoyer le commentaire</button>
 			{{ form_end(form) }}
 		</div>
 		{% for comment in allComments %}
@@ -57,7 +58,7 @@
 					</div>
 				</div>
 				<p>
-					{{ comment.content }}
+					{{ comment.content|raw }}
 				</p>
 			</div>
 		{% endfor %}

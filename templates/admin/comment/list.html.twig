@@ -21,12 +21,34 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ comment.name }} <span class="title-post-comment"> - {{ comment.post.title }}</span></h5>
-                                    <p class="card-text">{{ comment.content }}</p>
-                                    <a href="{{ path('admin_comment_delete', {id : comment.id}) }}" class="btn btn-danger" onclick="return confirm('Etes-vous sur de vouloir supprimer l\'article ?');"><i class="far fa-trash-alt"></i> Supprimer</a>
+                                    <p class="card-text">{{ comment.content|slice(0, 60) }}...</p>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ comment.id }}">
+                                    <i class="far fa-eye"></i> Lire le commentaire
+                                    </button> <a href="{{ path('admin_comment_delete', {id : comment.id}) }}" class="btn btn-danger" onclick="return confirm('Etes-vous sur de vouloir supprimer l\'article ?');"><i class="far fa-trash-alt"></i> Supprimer</a>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal-{{ comment.id }}" tabindex="-1" aria-labelledby="ModalLabel-{{ comment.id }}" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">{{ comment.name }}</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                {{ comment.content }}
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     {% endfor %}
+                    
                 </div>
                     <div class="navigation">
                         {{ knp_pagination_render(allComments) }}

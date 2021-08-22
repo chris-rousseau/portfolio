@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\BlogComment;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,10 +17,10 @@ class CommentType extends AbstractType
             ->add('name', null, [
                 'label' => 'Votre pseudo :'
             ])
-            ->add('content', null, [
-                'label' => 'Message :'
-            ])
-            ->add('save', SubmitType::class, ['label' => 'Envoyer votre message']);
+            ->add('content', CKEditorType::class, [
+                'label' => 'Message :',
+                'config_name' => 'comment_config',
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

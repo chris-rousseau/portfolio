@@ -286,6 +286,7 @@ form button {
 .comments p {
     font-size: .9em;
     line-height: 1.1em;
+    margin-bottom: .5em;
 }
 
 .comments img {
@@ -353,6 +354,10 @@ form button {
 .pagination {
     margin: 0 auto;
     padding: 0;
+}
+
+.submit-margin {
+    margin-top: .5em;
 }
 
 /* -------- Responsive -------- */
