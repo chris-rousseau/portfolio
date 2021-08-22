@@ -1,0 +1,47 @@
+{% extends 'admin_blog.html.twig' %}
+
+{% block title %}Toutes les catégories{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<div class="container px-4 mx-0">
+		<h1 class="mt-4">Toutes les catégories</h1>
+		<ol class="breadcrumb mb-4">
+			<li class="breadcrumb-item">
+				<a href="{{ path('admin_dashboard') }}">Dashboard</a>
+			</li>
+			<li class="breadcrumb-item active">Blog</li>
+			<li class="breadcrumb-item active">Toutes les catégories</li>
+		</ol>
+		<div class="card mb-4">
+			<div class="card-body">
+				<p class="mb-0">
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">Nom</th>
+									<th scope="col">Description</th>
+									<th scope="col">Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+							{% for category in allCategories %}
+								<tr>
+									<th scope="row">{{ category.name }}</th>
+                                    <td>{{ category.description|length > 50 ? category.description|slice(0, 50) ~ '...' : category.description }}</td>
+									<td><a class="btn btn-warning" href="{{ path('admin_category_edit', {id : category.id}) }}" role="button"><i class="far fa-edit"></i> Editer</a> <a class="btn btn-danger" href="{{ path('admin_category_delete', {id : category.id}) }}" role="button" onclick="return confirm('Etes-vous sur de vouloir supprimer l\'article ?');"><i class="far fa-trash-alt"></i> Supprimer</a></td>
+								</tr>
+							{% endfor %}
+							</tbody>
+						</table>
+						<a class="btn btn-success" href="{{ path('admin_category_add') }}" role="button"><i class="fas fa-plus"></i> Ajouter une catégorie</a>
+					</div>
+				</p>
+				<div class="navigation">
+                    {{ knp_pagination_render(allCategories) }}
+                </div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

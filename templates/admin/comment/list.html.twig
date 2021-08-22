@@ -28,7 +28,10 @@
                         </div>
                     {% endfor %}
                 </div>
-			</div>
-		</div>
-	</div>
-{% endblock %}
+                    <div class="navigation">
+                        {{ knp_pagination_render(allComments) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}

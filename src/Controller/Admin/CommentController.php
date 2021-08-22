@@ -4,7 +4,9 @@ namespace App\Controller\Admin;
 
 use App\Entity\BlogComment;
 use App\Repository\BlogCommentRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -16,14 +18,20 @@ class CommentController extends AbstractController
     /**
      * @Route("", name="list", methods={"GET"})
      */
-    public function list(BlogCommentRepository $blogCommentRepository): Response
+    public function list(BlogCommentRepository $blogCommentRepository, PaginatorInterface $paginator, Request $request): Response
     {
         $allComments = $blogCommentRepository->findBy([], [
             'created_at' => 'desc'
         ]);
 
+        $pagination = $paginator->paginate(
+            $allComments,
+            $request->query->getInt('page', 1),
+            10
+        );
+
         return $this->render('admin/comment/list.html.twig', [
-            'allComments' => $allComments,
+            'allComments' => $pagination,
         ]);
     }
 

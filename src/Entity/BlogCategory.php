@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\BlogCategoryRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -52,6 +53,7 @@ class BlogCategory
     public function __construct()
     {
         $this->blogPosts = new ArrayCollection();
+        $this->created_at = new DateTimeImmutable();
     }
 
     public function getId(): ?int

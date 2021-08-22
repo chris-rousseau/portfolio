@@ -63,3 +63,19 @@
     font-size: .7em;
     font-style: italic;
 }
+
+.navigation {
+    text-align: center;
+}
+
+.navigation li {
+    margin-right: .5em;
+    margin-top: 1em;
+}
+
+.navigation li a {
+    background-color: rgb(179, 206, 241);
+    padding: .5em .5em;
+    border-radius: 10px;
+    text-decoration: none;
+}

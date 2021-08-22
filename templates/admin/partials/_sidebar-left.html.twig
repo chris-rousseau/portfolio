@@ -10,10 +10,9 @@
 						Dashboard
 					</a>
 					<div class="sb-sidenav-menu-heading">Blog</div>
-					{# {% if is_granted('ROLE_ADMIN') %} #}
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
 							<div class="sb-nav-link-icon">
-								<i class="fab fa-blogger-b"></i>
+								<i class="far fa-newspaper"></i>
 							</div>
 							Articles
 							<div class="sb-sidenav-collapse-arrow">
@@ -28,7 +27,7 @@
 						</div>
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseUsers" aria-expanded="false" aria-controls="collapseUsers">
 							<div class="sb-nav-link-icon">
-								<i class="fas fa-user"></i>
+								<i class="far fa-comments"></i>
 							</div>
 							Commentaires
 							<div class="sb-sidenav-collapse-arrow">
@@ -40,31 +39,45 @@
 								<a class="nav-link" href="{{ path('admin_comment_list') }}">Tous les commentaires</a>
 							</nav>
 						</div>
-					{# {% endif %} #}
-					<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseReviews" aria-expanded="false" aria-controls="collapseReviews">
-						<div class="sb-nav-link-icon">
-							<i class="fas fa-comment"></i>
+						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCategories" aria-expanded="false" aria-controls="collapseCategories">
+							<div class="sb-nav-link-icon">
+								<i class="far fa-folder"></i>
+							</div>
+							Catégories
+							<div class="sb-sidenav-collapse-arrow">
+								<i class="fas fa-angle-down"></i>
+							</div>
+						</a>
+						<div class="collapse" id="collapseCategories" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+							<nav class="sb-sidenav-menu-nested nav">
+								<a class="nav-link" href="{{ path('admin_category_list') }}">Toutes les catégories</a>
+							</nav>
 						</div>
-						Avis
-						<div class="sb-sidenav-collapse-arrow">
-							<i class="fas fa-angle-down"></i>
+						<div class="sb-sidenav-menu-heading">Portfolio</div>
+						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePortfolio" aria-expanded="false" aria-controls="collapsePortfolio">
+							<div class="sb-nav-link-icon">
+								<i class="fab fa-blogger-b"></i>
+							</div>
+							Articles
+							<div class="sb-sidenav-collapse-arrow">
+								<i class="fas fa-angle-down"></i>
+							</div>
+						</a>
+						<div class="collapse" id="collapsePortfolio" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+							<nav class="sb-sidenav-menu-nested nav">
+								<a class="nav-link" href="{{ path('admin_blog_list') }}">Tous les articles</a>
+								<a class="nav-link" href="{{ path('admin_blog_add') }}">Ajouter un article</a>
+							</nav>
 						</div>
-					</a>
-					<div class="collapse" id="collapseReviews" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="#">Toute la liste</a>
-							<a class="nav-link" href="#">Liste des avis à valider</a>
-						</nav>
 					</div>
 				</div>
-			</div>
-			<div class="sb-sidenav-footer">
-				<div class="small">Connecté en tant que :</div>
-				{# {% if app.user is not empty %}
-					{{ app.user.name }}
-				{% endif %} #}
-			</div>
-		</nav>
-	</div>
-	<div id="layoutSidenav_content">
-		<main>
+				<div class="sb-sidenav-footer">
+					<div class="small">Connecté en tant que :</div>
+					{# {% if app.user is not empty %}
+						{{ app.user.name }}
+					{% endif %} #}
+				</div>
+			</nav>
+		</div>
+		<div id="layoutSidenav_content">
+			<main>

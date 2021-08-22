@@ -1,0 +1,38 @@
+{% extends 'admin_blog.html.twig' %}
+
+{% block title %}Ajouter une catégorie{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<div class="container px-4 mx-0">
+		<h1 class="mt-4">Ajouter une catégorie</h1>
+		<ol class="breadcrumb mb-4">
+			<li class="breadcrumb-item">
+				<a href="{{ path('admin_dashboard') }}">Dashboard</a>
+			</li>
+			<li class="breadcrumb-item active">Blog</li>
+			<li class="breadcrumb-item active">Ajouter une catégorie</li>
+		</ol>
+		<div class="card mb-4">
+			<div class="card-body">
+				<p class="mb-0">
+                {{ form_start(form) }}
+                <div class="article-top">
+                    {{ form_label(form.name) }}
+                    {% if form_errors(form.name) != null %}
+                        <div class="form-error">{{ form_errors(form.name) }}</div>
+                    {% endif %}
+                    {{ form_widget(form.name, { 'attr': {'class': 'input-style mb-2'} }) }}
+                </div>
+                {{ form_label(form.description) }}
+                {% if form_errors(form.description) != null %}
+                    <div class="form-error">{{ form_errors(form.description) }}</div>
+                {% endif %}
+                {{ form_widget(form.description, { 'attr': {'class': 'input-style'} }) }}<br>
+                <button type="submit" class="btn btn-success mt-2"><i class="fas fa-check"></i> Ajouter la catégorie</button> <a class="btn btn-info mt-2" href="{{ path('admin_category_list') }}" role="button"><i class="fas fa-long-arrow-alt-left"></i> Revenir à la liste</a>
+                {{ form_end(form) }}
+                </p>
+			</div>
+		</div>
+	</div>
+{% endblock %}
