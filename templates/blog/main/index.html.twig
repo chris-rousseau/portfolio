@@ -11,7 +11,7 @@
 				<h2>
 					<a href="{{ path('blog_post_single', {'slug' : post.slug}) }}">{{ post.title }}</a>
 				</h2>
-				{{ post.content|slice(0, 500)|raw }}...
+				{{ post.content|slice(0, 500)|raw }}{% if post.content|length > 500 %}...{% endif %}
 			</article>
 			<div class="read-plus">
 				<div class="read-next">
