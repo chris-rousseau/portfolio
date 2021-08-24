@@ -1,0 +1,26 @@
+{% extends 'base_blog.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	{% for label, messages in app.flashes %}
+		{% for message in messages %}
+			<div class="container-alert">
+				<div class="alert alert-{{ label }}">
+					<i class="far fa-comment"></i>
+					{{ message }}
+				</div>
+			</div>
+		{% endfor %}
+	{% endfor %}
+	<main>
+		<article>
+			<h2>
+				Me contacter
+			</h2>
+			{{ form(form) }}
+		</article>
+	</main>
+{% endblock %}
