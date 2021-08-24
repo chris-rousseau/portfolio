@@ -20,7 +20,20 @@
 			<h2>
 				Me contacter
 			</h2>
-			{{ form(form) }}
+			<p>Que vous souhaitiez m'envoyer un petit message ou bien m'embaucher, ça se passe ici :)</p>
+			{{ form_start(form) }}
+			{{ form_label(form.email) }}
+			{% if form_errors(form.email) != null %}
+				<div class="form-error">{{ form_errors(form.email) }}</div>
+			{% endif %}
+			{{ form_widget(form.email) }}
+			{{ form_label(form.message) }}
+			{% if form_errors(form.message) != null %}
+				<div class="form-error">{{ form_errors(form.message) }}</div>
+			{% endif %}
+			{{ form_widget(form.message) }}
+			<button type="submit" class="submit-margin"><i class="fas fa-check"></i> Envoyer l'email</button>
+			{{ form_end(form) }}
 		</article>
 	</main>
 {% endblock %}

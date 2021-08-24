@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -25,15 +26,13 @@ class ContactController extends AbstractController
             ->add('email', EmailType::class, [
                 'label' => 'Votre adresse mail :'
             ])
-            ->add('message', TextareaType::class, [
-                'label' => 'Votre message :'
+            ->add('message', CKEditorType::class, [
+                'label' => 'Votre message :',
+                'config_name' => 'comment_config'
             ])
             ->add('captcha', Recaptcha3Type::class, [
                 'constraints' => new Recaptcha3(),
                 'action_name' => 'contact',
-            ])
-            ->add('send', SubmitType::class, [
-                'label' => 'Envoyer l\'email !'
             ])
             ->getForm();
         
@@ -43,10 +42,11 @@ class ContactController extends AbstractController
             $data = $form->getData();
 
             $email = (new Email())
-            ->from($data['email'])
+            ->from('contact@chrisdev.fr')
             ->to('contact@chrisdev.fr')
+            ->subject('Nouveau message via le portfolio de '. $data['email'])
             // ->text('Sending emails is fun again!')
-            ->html($data['message']);
+            ->html('Email du destinataire : '. $data['email'] . $data['message']);
 
             $mailer->send($email);
 
