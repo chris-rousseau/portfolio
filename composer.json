@@ -14,6 +14,7 @@
         "doctrine/doctrine-migrations-bundle": "^3.1",
         "doctrine/orm": "^2.9",
         "friendsofsymfony/ckeditor-bundle": "^2.3",
+        "karser/karser-recaptcha3-bundle": "^0.1.19",
         "knplabs/knp-paginator-bundle": "^5.6",
         "nojimage/twitter-text-php": "^3.1",
         "phpdocumentor/reflection-docblock": "^5.2",

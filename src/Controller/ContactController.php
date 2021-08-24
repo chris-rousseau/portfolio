@@ -11,6 +11,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
+use Karser\Recaptcha3Bundle\Form\Recaptcha3Type;
+use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3;
 
 class ContactController extends AbstractController
 {
@@ -25,6 +27,10 @@ class ContactController extends AbstractController
             ])
             ->add('message', TextareaType::class, [
                 'label' => 'Votre message :'
+            ])
+            ->add('captcha', Recaptcha3Type::class, [
+                'constraints' => new Recaptcha3(),
+                'action_name' => 'contact',
             ])
             ->add('send', SubmitType::class, [
                 'label' => 'Envoyer l\'email !'
