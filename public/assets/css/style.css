@@ -74,13 +74,21 @@ article a:hover {
 }
 
 article p {
-    font-size: 1.125em;
+    font-size: 1em;
     line-height: 1.5em;
     margin-bottom: 1.2em;
 }
 
 article p:last-child {
     margin-bottom: 0;
+}
+
+article li {
+    padding-left: 1em;
+    margin-bottom: .8em;
+    list-style-type: disc;
+    list-style-position: inside;
+    line-height: 1.5em;
 }
 
 h2 {
@@ -358,6 +366,65 @@ form button {
 
 .submit-margin {
     margin-top: .5em;
+}
+
+.network {
+    background-color: #272727;
+    border-radius: 25px;
+    margin: .8em;
+    padding: .7em;
+}
+
+.network ul {
+    text-align: center;
+}
+
+.network li {
+    display: inline-block;
+    margin-left: .5em;
+    margin-right: .5em;
+}
+
+.network a {
+    text-decoration: none;
+    color: #ce983a;
+}
+
+.hello {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2em;
+    margin-left: 1.4em;
+    margin-bottom: .5em;
+}
+
+.presentation {
+    margin-top: 1em;
+}
+
+.presentation img {
+    width: 60px;
+}
+
+.presentation p {
+    background-color: #272727;
+    font-size: .9em;
+    border-radius: 0 15px 0 15px;
+    padding: .7em;
+    margin-bottom: 1em;
+}
+
+.text-yellow {
+    color: #ce983a;
+}
+
+.float-left {
+    float: left;
+    margin-right: .5em;
+}
+
+.float-right {
+    float: right;
+    margin-left: .5em;
 }
 
 /* -------- Responsive -------- */

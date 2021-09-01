@@ -1,0 +1,50 @@
+{% extends 'base_portfolio.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<main>
+        <div class="hello">
+            Bonjour !
+        </div>
+		<article>
+            <p>
+                Moi c'est Christopher <em>(mais je préfère <strong>Chris</strong>)</em>, bienvenue !
+            </p>
+            <p>
+                J'ai pas mal cherché et regardé ce qui se faisait du côté de mes collègues dev' et finalement je suis arrivé à un constat :
+            </p>
+            <p>
+                Je n'ai pas envie de faire un site ou vous allez devoir <strong>scroller 3km de page</strong> pas toujours très intéressante ou bien un site <strong>avec 50 pages</strong> pour faire comme si j'avais énormement de contenu à vous montrer.<br>
+                Gagnons du temps et allons à l'essentiel, vous voulez bien ?
+            </p>
+            <ul>
+                <li>Je suis <strong>développeur backend</strong>, avant ça j'ai fait des choses assez diverses, je vous laisse jetter un oeil <a href="#">sur mon Linkedin si ça vous intéresse</a>.</li>
+                <li>J'habite à côté du Puy-de-Dôme, proche de <strong>Clermont-Ferrant</strong> (63).</li>
+                <li>J'aime beaucoup les jeux-vidéo et la randonnée !</li>
+            </ul>
+            <p>
+                C'était rapide ! Si vous voulez en savoir plus, vous pouvez toujours <a href="#">m'envoyer un message</a>.
+            </p>
+		</article>
+        <div class="presentation">
+            <p>
+                <img src="{{ asset('assets/img/') }}blog.png" alt="Illustration (logo) d'un blog" class="float-left">
+                Je ne suis pas un blogueur dans l'âme mais il faut avouer que c'est pratique pour partager des choses.<br>
+            <span class="text-yellow">Et c'est un blog fait à la main !</span>
+            </p>
+            <p>
+                <img src="{{ asset('assets/img/') }}portfolio.png" alt="Illustration (logo) d'un blog" class="float-right">
+                C'est ici que je vous montre mon travail, ce sur quoi j'ai participé ou totalement fait moi-même.<br>
+            <span class="text-yellow">Voici mon portfolio !</span>
+            </p>
+            <p>
+                <img src="{{ asset('assets/img/') }}contact.png" alt="Illustration (logo) d'un blog" class="float-left">
+                Le moyen le plus simple et rapide pour m'envoyer un message ou une proposition d'embauche.<br>
+            <span class="text-yellow">Un bon vieux mail à l'ancienne !</span>
+            </p>
+        </div>
+	</main>
+{% endblock %}
