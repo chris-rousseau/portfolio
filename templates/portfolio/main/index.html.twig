@@ -29,22 +29,28 @@
                 C'était rapide ! Si vous voulez en savoir plus, vous pouvez toujours <a href="#">m'envoyer un message</a>.
             </p>
 		</article>
-        <div class="presentation">
-            <p>
-                <img src="{{ asset('assets/img/') }}blog.png" alt="Illustration (logo) d'un blog" class="float-left">
-                Je ne suis pas un blogueur dans l'âme mais il faut avouer que c'est pratique pour partager des choses.<br>
-            <span class="text-yellow">Et c'est un blog fait à la main !</span>
-            </p>
-            <p>
-                <img src="{{ asset('assets/img/') }}portfolio.png" alt="Illustration (logo) d'un blog" class="float-right">
-                C'est ici que je vous montre mon travail, ce sur quoi j'ai participé ou totalement fait moi-même.<br>
-            <span class="text-yellow">Voici mon portfolio !</span>
-            </p>
-            <p>
-                <img src="{{ asset('assets/img/') }}contact.png" alt="Illustration (logo) d'un blog" class="float-left">
-                Le moyen le plus simple et rapide pour m'envoyer un message ou une proposition d'embauche.<br>
-            <span class="text-yellow">Un bon vieux mail à l'ancienne !</span>
-            </p>
-        </div>
 	</main>
+        <div class="presentation">
+            <div class="bloc">
+                <a href="#"><img src="{{ asset('assets/img/') }}blog.png" alt="Illustration (logo) d'un blog"></a>
+                <p>
+                    Je ne suis pas un blogueur dans l'âme mais il faut avouer que c'est pratique pour partager des choses.<br>
+                    <a href="#">Et c'est un blog fait à la main !</a>
+                </p>
+            </div>
+            <div class="bloc">
+                <p>
+                    C'est ici que je vous montre mon travail, ce sur quoi j'ai participé ou totalement fait moi-même.<br>
+                    <a href="">Voici mon portfolio !</a>
+                </p>
+                <a href="#"><img src="{{ asset('assets/img/') }}portfolio.png" alt="Illustration (logo) du portfolio" class="portfolio"></a>
+            </div>
+            <div class="bloc">
+                <a href="#"><img src="{{ asset('assets/img/') }}contact.png" alt="Illustration (logo) d'une enveloppe"></a>
+                <p>
+                    Le moyen le plus simple et rapide pour m'envoyer un message ou une proposition d'embauche.<br>
+                    <a href="#">Un bon vieux mail à l'ancienne !</a>
+                </p>
+            </div>
+        </div>
 {% endblock %}

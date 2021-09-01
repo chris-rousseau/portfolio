@@ -1,0 +1,47 @@
+@media (min-width: 43.750em) {
+    #container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    main {
+        width: 50%;
+    }
+
+    .presentation {
+        width: 48%;
+        padding-top: 2em;
+    }
+
+    .network {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+    }
+}
+
+@media (min-width: 62.500em) {
+    main {
+        width: 55%;
+    }
+
+    .presentation {
+        width: 43%;
+    }
+
+    .presentation img {
+        width: 100px;
+    }
+
+    .presentation p {
+        background-color: #1f1f1f;
+        font-size: 1em;
+        padding: 1em;
+        line-height: 1.2em;
+    }
+
+    .network {
+        background-color: #1f1f1f;
+    }
+}

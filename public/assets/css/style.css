@@ -69,7 +69,7 @@ article a {
 }
 
 article a:hover {
-    color: #ffffff;
+    color: #e7e7e7;
     text-decoration: underline;
 }
 
@@ -387,6 +387,10 @@ form button {
 
 .network a {
     text-decoration: none;
+    color: #e7e7e7;
+}
+
+.network a:hover {
     color: #ce983a;
 }
 
@@ -397,34 +401,38 @@ form button {
     margin-bottom: .5em;
 }
 
-.presentation {
+.bloc {
+    display: flex;
     margin-top: 1em;
 }
 
 .presentation img {
     width: 60px;
+    margin-right: 1em;
 }
 
 .presentation p {
     background-color: #272727;
     font-size: .9em;
+    line-height: 1.1em;
     border-radius: 0 15px 0 15px;
     padding: .7em;
     margin-bottom: 1em;
 }
 
-.text-yellow {
+.presentation a {
     color: #ce983a;
+    text-decoration: none;
 }
 
-.float-left {
-    float: left;
-    margin-right: .5em;
+.presentation a:hover {
+    color: #e7e7e7;
+    text-decoration: underline;
 }
 
-.float-right {
-    float: right;
-    margin-left: .5em;
+.portfolio {
+    margin-right: 0 !important;
+    margin-left: 1em;
 }
 
 /* -------- Responsive -------- */
@@ -497,6 +505,10 @@ form button {
     }
 
     .social {
+        width: 30%;
+    }
+
+    .presentation {
         width: 30%;
     }
 
@@ -575,6 +587,10 @@ form button {
     }
 
     .social {
+        width: 21%;
+    }
+
+    .presentation {
         width: 21%;
     }
 
