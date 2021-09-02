@@ -1,3 +1,53 @@
+h1 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+h2 {
+    font-size: 1.2em;
+}
+
+h2::before {
+    content: "";
+}
+
+.project {
+    display: flex;
+    align-items: center;
+    background-color: #272727;
+    border-radius: 15px;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.project img {
+    height: 60px;
+    margin-right: 1em;
+    border-radius: 15px;
+    padding-top: .2em;
+}
+
+.project p {
+    font-size: .8em;
+}
+
+.info {
+    display: none;
+    margin-top: 1em;
+    text-align: right;
+}
+
+.info a {
+    display: none;
+    background-color: #e7e7e7;
+    border-radius: 15px;
+    padding: .3em .5em;
+    color: #272727;
+    font-weight: bold;
+    text-decoration: none;
+}
+
 @media (min-width: 43.750em) {
     #container {
         display: flex;
@@ -18,6 +68,24 @@
         position: absolute;
         top: 0px;
         right: 0px;
+    }
+
+    .bloc-project {
+        width: 100%;
+    }
+
+    .project {
+        position: relative;
+        width: 80%;
+        margin: 1em auto;
+    }
+
+    .info, .info a {
+        display: block;
+        position: absolute;
+        width: 5.5em;
+        top: 0;
+        right: .5em;
     }
 }
 
@@ -41,7 +109,13 @@
         line-height: 1.2em;
     }
 
-    .network {
+    .network, .project {
         background-color: #1f1f1f;
+    }
+}
+
+@media (min-width: 75em) {
+    h2 {
+        position: static;
     }
 }

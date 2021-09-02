@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("", name="portfolio_")
+ * @Route("", name="site_")
  */
 class MainController extends AbstractController
 {
@@ -16,7 +16,17 @@ class MainController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('portfolio/main/index.html.twig', [
+        return $this->render('site/main/index.html.twig', [
+            'controller_name' => 'MainController',
+        ]);
+    }
+
+    /**
+     * @Route("/portfolio", name="projects")
+     */
+    public function projects(): Response
+    {
+        return $this->render('site/main/projects.html.twig', [
             'controller_name' => 'MainController',
         ]);
     }
