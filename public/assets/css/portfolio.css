@@ -48,6 +48,47 @@ h2::before {
     text-decoration: none;
 }
 
+.project-single {
+    background-color: #272727;
+    border-radius: 15px;
+    padding: 1em;
+}
+
+.project-single h2 {
+    margin-top: 1em;
+}
+
+.project-single h2:nth-child(1) {
+    margin-top: 0;
+}
+
+.project-single a {
+    color: #ce983a;
+}
+
+.project-single a:hover {
+    color: #e7e7e7;
+}
+
+.project-single p {
+    margin-bottom: 1em;
+}
+
+.project-single p:last-child {
+    margin-bottom: 0;
+}
+
+.screenshots {
+    margin: 1em 0;
+}
+
+.screenshots img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 1em;
+}
+
 @media (min-width: 43.750em) {
     #container {
         display: flex;
@@ -78,6 +119,10 @@ h2::before {
         position: relative;
         width: 80%;
         margin: 1em auto;
+    }
+
+    .project img {
+        height: 90px;
     }
 
     .info, .info a {
@@ -111,6 +156,24 @@ h2::before {
 
     .network, .project {
         background-color: #1f1f1f;
+    }
+
+    .details {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .project-single {
+        background-color: #1f1f1f;
+    }
+
+    .bloc-details {
+        width: 65%;
+    }
+
+    .screenshots {
+        width: 32%;
+        margin-top: 3em;
     }
 }
 

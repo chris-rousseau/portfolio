@@ -1,0 +1,31 @@
+{% extends 'base_portfolio.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div class="details">
+        <div class="bloc-details">
+            <h1>CryptoConvert</h1>
+            <div class="project-single">
+                <h2>Description</h2>
+                <p>
+                    Convertisseur de $/€ vers quelques cryptomonnaies, en utilisant l'API de Binance.<br>
+                    Réalisation complète, webdesign également.
+                </p>
+                <h2>Technologies utilisées</h2>
+                <p>
+                    HTML, CSS, PHP, Twig, Symfony, API Binance
+                </p>
+                <p>
+                    <i class="fab fa-github"></i> <a href="#">Le Github du projet</a>
+                </p>
+            </div>
+        </div>
+        <div class="screenshots">
+            <img src="https://data.1freewallpapers.com/download/artistic-retrowave-sunrise-vaporwave-1024x576.jpg" alt="Image du projet">
+            <img src="https://data.1freewallpapers.com/download/artistic-retrowave-sunrise-vaporwave-1024x576.jpg" alt="Image du projet">
+        </div>
+    </div>
+{% endblock %}

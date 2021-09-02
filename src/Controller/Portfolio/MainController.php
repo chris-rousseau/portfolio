@@ -30,4 +30,14 @@ class MainController extends AbstractController
             'controller_name' => 'MainController',
         ]);
     }
+
+    /**
+     * @Route("/portfolio/demo", name="details")
+     */
+    public function details(): Response
+    {
+        return $this->render('site/main/project_details.html.twig', [
+            'controller_name' => 'MainController',
+        ]);
+    }
 }
