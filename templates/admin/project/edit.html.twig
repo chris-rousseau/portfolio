@@ -1,0 +1,62 @@
+{% extends 'admin_blog.html.twig' %}
+
+{% block title %}Ajouter un projet{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<div class="container px-4 mx-0">
+		<h1 class="mt-4">Ajouter un projet</h1>
+		<ol class="breadcrumb mb-4">
+			<li class="breadcrumb-item">
+				<a href="{{ path('admin_dashboard') }}">Dashboard</a>
+			</li>
+			<li class="breadcrumb-item active">Portfolio</li>
+			<li class="breadcrumb-item active">Ajouter un projet</li>
+		</ol>
+		<div class="card mb-4">
+			<div class="card-body">
+				<p class="mb-0">
+					{{ form_start(form) }}
+					
+					{% if form_errors(form.name) != null %}
+						<div class="form-error">{{ form_errors(form.name) }}</div>
+					{% endif %}
+					{{ form_widget(form.name, { 'attr': {'class': 'input-style mb-2'} }) }}<br>
+
+					{{ form_label(form.description) }}
+						{% if form_errors(form.description) != null %}
+							<div class="form-error">{{ form_errors(form.description) }}</div>
+						{% endif %}
+					{{ form_widget(form.description) }}
+					
+					{% if form_errors(form.technology) != null %}
+						<div class="form-error">{{ form_errors(form.technology) }}</div>
+					{% endif %}
+					{{ form_widget(form.technology, { 'attr': {'class': 'input-style mt-2 mb-2'} }) }}
+
+					{% if form_errors(form.github) != null %}
+						<div class="form-error">{{ form_errors(form.github) }}</div>
+					{% endif %}
+					{{ form_widget(form.github, { 'attr': {'class': 'input-style mb-2'} }) }}
+
+					{% if form_errors(form.link) != null %}
+						<div class="form-error">{{ form_errors(form.link) }}</div>
+					{% endif %}
+					{{ form_widget(form.link, { 'attr': {'class': 'input-style'} }) }}<br>
+
+					{{ form_label(form.screenshotImg) }}
+						{% if form_errors(form.screenshotImg) != null %}
+							<div class="form-error">{{ form_errors(form.screenshotImg) }}</div>
+						{% endif %}
+					{{ form_widget(form.screenshotImg, { 'attr': {'class': 'mt-4 mb-4'} }) }}<br>
+					{% if project.screenshot != null %}
+						<img src="{{ asset('uploads/screenshots/') }}{{ project.screenshot }}" width="500px" alt=""><br>
+					{% endif %}
+					
+					<button type="submit" class="btn btn-success mt-2"><i class="fas fa-check"></i> Editer le projet</button> <a class="btn btn-info mt-2" href="{{ path('admin_project_list') }}" role="button"><i class="fas fa-long-arrow-alt-left"></i> Revenir à la liste</a>
+					{{ form_end(form) }}
+				</p>
+			</div>
+		</div>
+	</div>
+{% endblock %}

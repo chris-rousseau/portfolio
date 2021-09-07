@@ -1,0 +1,47 @@
+{% extends 'admin_blog.html.twig' %}
+
+{% block title %}Tous les projets{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<div class="container px-4 mx-0">
+		<h1 class="mt-4">Tous les projets</h1>
+		<ol class="breadcrumb mb-4">
+			<li class="breadcrumb-item">
+				<a href="{{ path('admin_dashboard') }}">Dashboard</a>
+			</li>
+			<li class="breadcrumb-item active">Portfolio</li>
+			<li class="breadcrumb-item active">Tous les projets</li>
+		</ol>
+		<div class="card mb-4">
+			<div class="card-body">
+				<p class="mb-0">
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">Nom</th>
+									<th scope="col">Technologies</th>
+									<th scope="col">Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+							{% for project in allProjects %}
+								<tr>
+									<th scope="row">{{ project.name }}</th>
+                                    <td>{{ project.technology }}</td>
+									<td><a class="btn btn-warning" href="{{ path('admin_project_edit', {id : project.id}) }}" role="button"><i class="far fa-edit"></i> Editer</a> <a class="btn btn-danger" href="{{ path('admin_project_delete', {id : project.id}) }}" role="button" onclick="return confirm('Etes-vous sur de vouloir supprimer le projet ?');"><i class="far fa-trash-alt"></i> Supprimer</a></td>
+								</tr>
+							{% endfor %}
+							</tbody>
+						</table>
+						<a class="btn btn-success" href="{{ path('admin_project_add') }}" role="button"><i class="fas fa-plus"></i> Ajouter un projet</a>
+					</div>
+				</p>
+				<div class="navigation">
+                    {{ knp_pagination_render(allProjects) }}
+                </div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
