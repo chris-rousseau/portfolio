@@ -368,73 +368,6 @@ form button {
     margin-top: .5em;
 }
 
-.network {
-    background-color: #272727;
-    border-radius: 25px;
-    margin: .8em;
-    padding: .7em;
-}
-
-.network ul {
-    text-align: center;
-}
-
-.network li {
-    display: inline-block;
-    margin-left: .5em;
-    margin-right: .5em;
-}
-
-.network a {
-    text-decoration: none;
-    color: #e7e7e7;
-}
-
-.network a:hover {
-    color: #ce983a;
-}
-
-.hello {
-    font-family: 'Dancing Script', cursive;
-    font-size: 2em;
-    margin-left: 1.4em;
-    margin-bottom: .5em;
-}
-
-.bloc {
-    display: flex;
-    margin-top: 1em;
-}
-
-.presentation img {
-    width: 60px;
-    margin-right: 1em;
-}
-
-.presentation p {
-    background-color: #272727;
-    font-size: .9em;
-    line-height: 1.1em;
-    border-radius: 0 15px 0 15px;
-    padding: .7em;
-    margin-bottom: 1em;
-}
-
-.presentation a {
-    color: #ce983a;
-    text-decoration: none;
-}
-
-.presentation a:hover {
-    color: #e7e7e7;
-    text-decoration: underline;
-}
-
-.portfolio {
-    margin-right: 0 !important;
-    margin-left: 1em;
-}
-
 /* -------- Responsive -------- */
 
 @media (max-width: 22em) {
@@ -508,10 +441,6 @@ form button {
         width: 30%;
     }
 
-    .presentation {
-        width: 30%;
-    }
-
     .twitter {
         background-color: #1f1f1f;
         height: 3em;
@@ -533,7 +462,7 @@ form button {
     }
 
     footer {
-        width: 38em;
+        width: 27em;
         margin: 4em auto 0 auto;
     }
 
@@ -587,10 +516,6 @@ form button {
     }
 
     .social {
-        width: 21%;
-    }
-
-    .presentation {
         width: 21%;
     }
 

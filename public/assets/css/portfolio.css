@@ -12,6 +12,81 @@ h2::before {
     content: "";
 }
 
+.network-footer {
+    margin: 2em auto;
+    text-align: center;
+}
+
+.network {
+    background-color: #272727;
+    border-radius: 25px;
+    padding: .7em;
+}
+
+.network ul {
+    text-align: center;
+}
+
+.network li {
+    display: inline-block;
+    margin-left: .5em;
+    margin-right: .5em;
+}
+
+.network a {
+    text-decoration: none;
+    color: #e7e7e7;
+}
+
+.network a:hover {
+    color: #ce983a;
+}
+
+.title-network {
+    display: none;
+}
+
+.hello {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2em;
+    margin-left: 1.4em;
+    margin-bottom: .5em;
+}
+
+.bloc {
+    display: flex;
+    margin-top: 1em;
+}
+
+.presentation img {
+    width: 60px;
+    margin-right: 1em;
+}
+
+.presentation p {
+    background-color: #272727;
+    font-size: .9em;
+    line-height: 1.1em;
+    border-radius: 0 15px 0 15px;
+    padding: .7em;
+    margin-bottom: 1em;
+}
+
+.presentation a {
+    color: #ce983a;
+    text-decoration: none;
+}
+
+.presentation a:hover {
+    color: #e7e7e7;
+    text-decoration: underline;
+}
+
+.portfolio {
+    margin-right: 0 !important;
+    margin-left: 1em;
+}
+
 .project {
     display: flex;
     align-items: center;
@@ -89,6 +164,14 @@ h2::before {
     margin-bottom: 1em;
 }
 
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
 @media (min-width: 43.750em) {
     #container {
         display: flex;
@@ -103,12 +186,6 @@ h2::before {
     .presentation {
         width: 48%;
         padding-top: 2em;
-    }
-
-    .network {
-        position: absolute;
-        top: 0px;
-        right: 0px;
     }
 
     .bloc-project {
@@ -147,11 +224,29 @@ h2::before {
         width: 100px;
     }
 
+    .presentation {
+        width: 41%;
+    }
+
     .presentation p {
         background-color: #1f1f1f;
         font-size: 1em;
         padding: 1em;
         line-height: 1.2em;
+    }
+
+    .network-footer {
+        display: flex;
+        margin: 2em auto;
+    }
+
+    .title-network {
+        display: block;
+        background-color: #e7e7e7;
+        color: #272727;
+        font-weight: bold;
+        border-radius: 25px;
+        padding: .7em 1em;
     }
 
     .network, .project {
@@ -180,5 +275,9 @@ h2::before {
 @media (min-width: 75em) {
     h2 {
         position: static;
+    }
+
+    .presentation {
+        width: 41%;
     }
 }
