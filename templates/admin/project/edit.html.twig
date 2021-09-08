@@ -3,6 +3,11 @@
 {% block title %}Editer un projet{{ parent() }}
 {% endblock %}
 
+{% block stylesheets %}
+{{ parent() }}
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+{% endblock %}
+
 {% block body %}
 	<div class="container px-4 mx-0">
 		<h1 class="mt-4">Editer un projet</h1>
@@ -33,16 +38,17 @@
 							<div class="form-error">{{ form_errors(form.description) }}</div>
 						{% endif %}
 					{{ form_widget(form.description) }}
-					
-					{% if form_errors(form.technology) != null %}
-						<div class="form-error">{{ form_errors(form.technology) }}</div>
-					{% endif %}
-					{{ form_widget(form.technology, { 'attr': {'class': 'input-style mt-2 mb-2'} }) }}
+
+					{{ form_label(form.tags) }}<br>
+						{% if form_errors(form.tags) != null %}
+							<div class="form-error">{{ form_errors(form.tags) }}</div>
+						{% endif %}
+					{{ form_widget(form.tags) }}<br>
 
 					{% if form_errors(form.github) != null %}
 						<div class="form-error">{{ form_errors(form.github) }}</div>
 					{% endif %}
-					{{ form_widget(form.github, { 'attr': {'class': 'input-style mb-2'} }) }}
+					{{ form_widget(form.github, { 'attr': {'class': 'input-style mt-2 mb-2'} }) }}
 
 					{% if form_errors(form.link) != null %}
 						<div class="form-error">{{ form_errors(form.link) }}</div>
@@ -82,4 +88,10 @@
 			</div>
 		</div>
 	</div>
+{% endblock %}
+
+{% block javascripts %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+	<script src="{{ asset('assets/js/') }}tags.js"></script>
 {% endblock %}

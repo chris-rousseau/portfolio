@@ -79,3 +79,7 @@
     border-radius: 10px;
     text-decoration: none;
 }
+
+.select-tags {
+    width: 50%;
+}

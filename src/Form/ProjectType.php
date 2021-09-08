@@ -3,7 +3,10 @@
 namespace App\Form;
 
 use App\Entity\PortfolioProject;
+use App\Entity\Tags;
+use Doctrine\ORM\EntityRepository;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -28,11 +31,20 @@ class ProjectType extends AbstractType
             ->add('description', CKEditorType::class, [
                 'label' => 'Description du projet'
                 ])
-            ->add('technology', null, [
-                'label' => ' ',
-                'attr' => array(
-                    'placeholder' => 'Technologies utilisées'
-                )])
+            ->add('tags', EntityType::class, [
+                'label' => 'Tags',
+                'class' => Tags::class,
+                'multiple' => true,
+                'choice_label' => 'name',
+                'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('t')
+                        ->orderBy('t.name', 'asc');
+                },
+                'by_reference' => false,
+                'attr' => [
+                    'class' => 'select-tags'
+                ]
+                ])
             ->add('github', null, [
                 'label' => ' ',
                 'attr' => array(

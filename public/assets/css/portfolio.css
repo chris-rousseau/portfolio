@@ -147,6 +147,7 @@ h2::before {
 
 .project-single p {
     margin-bottom: 1em;
+    line-height: 1.3em;
 }
 
 .project-single p:last-child {
@@ -162,7 +163,7 @@ h2::before {
     height: auto;
     border-radius: 15px;
     margin-bottom: 1em;
-    /* box-shadow: 0 0 10px #e7e7e775; */
+    box-shadow: 0 0 10px #e7e7e72c;
 }
 
 .bold {
@@ -216,6 +217,14 @@ h2::before {
     font-weight: bold;
     color: #1f1f1f;
     text-decoration: none;
+}
+
+.tag {
+    background-color: #fff;
+    border-radius: 5px;
+    color: #272727;
+    padding: .3em .4em;
+    margin-right: .2em;
 }
 
 @media (min-width: 43.750em) {
@@ -325,5 +334,13 @@ h2::before {
 
     .presentation {
         width: 41%;
+    }
+}
+
+@media (min-width: 110em) {
+    .network-footer {
+        position: absolute;
+        top: .9em;
+        right : 28em;
     }
 }

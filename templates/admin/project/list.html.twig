@@ -29,7 +29,11 @@
 							{% for project in allProjects %}
 								<tr>
 									<th scope="row">{{ project.name }}</th>
-                                    <td>{{ project.technology }}</td>
+                                    <td>
+										{% for tags in project.tags %}
+											<span class="tag">{{ tags.name }}</span>
+										{% endfor %}
+									</td>
 									<td><a class="btn btn-warning" href="{{ path('admin_project_edit', {id : project.id}) }}" role="button"><i class="far fa-edit"></i> Editer</a> <a class="btn btn-danger" href="{{ path('admin_project_delete', {id : project.id}) }}" role="button" onclick="return confirm('Etes-vous sur de vouloir supprimer le projet ?');"><i class="far fa-trash-alt"></i> Supprimer</a></td>
 								</tr>
 							{% endfor %}

@@ -13,7 +13,9 @@
                 {{ project.description|raw }}
                 <h2>Technologies utilisées</h2>
                 <p>
-                    {{ project.technology }}
+                    {% for tags in project.tags %}
+                        <span class="tag">{{ tags.name }}</span>
+                    {% endfor %}
                 </p>
             </div>
             <div class="links">
