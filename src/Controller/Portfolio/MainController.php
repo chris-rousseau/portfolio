@@ -4,7 +4,9 @@ namespace App\Controller\Portfolio;
 
 use App\Entity\PortfolioProject;
 use App\Repository\PortfolioProjectRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -26,14 +28,20 @@ class MainController extends AbstractController
     /**
      * @Route("/portfolio", name="projects")
      */
-    public function projects(PortfolioProjectRepository $portfolioProjectRepository): Response
+    public function projects(PortfolioProjectRepository $portfolioProjectRepository, Request $request, PaginatorInterface $paginator): Response
     {
         $allProjects = $portfolioProjectRepository->findBy([], [
             'created_at' => 'desc'
         ]);
 
+        $pagination = $paginator->paginate(
+            $allProjects,
+            $request->query->getInt('page', 1),
+            5
+        );
+
         return $this->render('site/main/projects.html.twig', [
-            'allProjects' => $allProjects,
+            'allProjects' => $pagination,
         ]);
     }
 
