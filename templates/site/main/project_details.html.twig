@@ -7,26 +7,35 @@
 {% block body %}
     <div class="details">
         <div class="bloc-details">
-            <h1>CryptoConvert</h1>
+            <h1>{{ project.name }}</h1>
             <div class="project-single">
                 <h2>Description</h2>
-                <p>
-                    Convertisseur de $/€ vers quelques cryptomonnaies, en utilisant l'API de Binance.<br>
-                    Réalisation complète, webdesign également.
-                </p>
+                {{ project.description|raw }}
                 <h2>Technologies utilisées</h2>
                 <p>
-                    HTML, CSS, PHP, Twig, Symfony, API Binance
+                    {{ project.technology }}
                 </p>
             </div>
             <div class="links">
-                <div class="github-button"><a href="#"><i class="fab fa-github"></i> Lien vers le Github</a></div>
-                <div class="project-button"><a href="#"><i class="fas fa-link"></i> Lien vers le projet</a></div>
+                {% if project.github != null %}
+                    <div class="github-button"><a href="{{ project.github }}" target="_blank"><i class="fab fa-github"></i> Lien vers le Github</a></div>
+                {% endif %}
+                {% if project.link != null %}
+                    <div class="project-button"><a href="{{ project.link }}" target="_blank"><i class="fas fa-link"></i> Lien vers le projet</a></div>
+                {% endif %}
+                <div class="list-button"><a href="{{ path('site_projects') }}"><i class="fas fa-long-arrow-alt-left"></i> Retour à la liste</a></div>
             </div>
         </div>
         <div class="screenshots">
-            <img src="https://data.1freewallpapers.com/download/artistic-retrowave-sunrise-vaporwave-1024x576.jpg" alt="Image du projet">
-            <img src="https://data.1freewallpapers.com/download/artistic-retrowave-sunrise-vaporwave-1024x576.jpg" alt="Image du projet">
+            <img src="{{ asset('uploads/screenshots/') }}{{ project.screenshot }}" alt="Capture d'écran du projet {{ project.name }}">
+
+            {% if project.screenshot2 != null %}
+                <img src="{{ asset('uploads/screenshots/') }}{{ project.screenshot2 }}" alt="Seconde capture d'écran du projet {{ project.name }}">
+            {% endif %}
+
+            {% if project.screenshot3 != null %}
+                <img src="{{ asset('uploads/screenshots/') }}{{ project.screenshot3 }}" alt="Troisième capture d'écran du projet {{ project.name }}">
+            {% endif %}
         </div>
     </div>
 {% endblock %}

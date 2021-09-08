@@ -13,7 +13,9 @@
                     <div>
                         <h2><a href="{{ path('site_details', {slug : project.slug}) }}">{{ project.name }}</a></h2>
 
-                        {{ project.description|striptags|slice(0, 200) ~ '...' }}
+                        <p>
+                            {{ project.presentation }}
+                        </p>
 
                         <div class="info">
                             <a href="{{ path('site_details', {slug : project.slug}) }}">+ d'infos</a>

@@ -2,6 +2,7 @@
 
 namespace App\Controller\Portfolio;
 
+use App\Entity\PortfolioProject;
 use App\Repository\PortfolioProjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,10 +40,11 @@ class MainController extends AbstractController
     /**
      * @Route("/portfolio/{slug}", name="details")
      */
-    public function details(): Response
+    public function details(PortfolioProject $portfolioProject): Response
     {
+
         return $this->render('site/main/project_details.html.twig', [
-            'controller_name' => 'MainController',
+            'project' => $portfolioProject,
         ]);
     }
 }

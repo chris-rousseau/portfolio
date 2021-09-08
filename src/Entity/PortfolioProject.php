@@ -73,6 +73,11 @@ class PortfolioProject
      */
     private $screenshot3;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $presentation;
+
     public function __construct()
     {
         $this->created_at = new DateTimeImmutable();
@@ -212,6 +217,18 @@ class PortfolioProject
     public function setScreenshot3(?string $screenshot3): self
     {
         $this->screenshot3 = $screenshot3;
+
+        return $this;
+    }
+
+    public function getPresentation(): ?string
+    {
+        return $this->presentation;
+    }
+
+    public function setPresentation(string $presentation): self
+    {
+        $this->presentation = $presentation;
 
         return $this;
     }

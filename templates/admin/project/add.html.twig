@@ -21,7 +21,12 @@
 					{% if form_errors(form.name) != null %}
 						<div class="form-error">{{ form_errors(form.name) }}</div>
 					{% endif %}
-					{{ form_widget(form.name, { 'attr': {'class': 'input-style mb-2'} }) }}<br>
+					{{ form_widget(form.name, { 'attr': {'class': 'input-style mb-2'} }) }}
+
+					{% if form_errors(form.presentation) != null %}
+						<div class="form-error">{{ form_errors(form.presentation) }}</div>
+					{% endif %}
+					{{ form_widget(form.presentation, { 'attr': {'class': 'input-style mb-2'} }) }}<br>
 
 					{{ form_label(form.description) }}
 						{% if form_errors(form.description) != null %}

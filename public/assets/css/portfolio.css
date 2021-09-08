@@ -162,6 +162,7 @@ h2::before {
     height: auto;
     border-radius: 15px;
     margin-bottom: 1em;
+    /* box-shadow: 0 0 10px #e7e7e775; */
 }
 
 .bold {
@@ -185,8 +186,24 @@ h2::before {
     background-color: #41bdd3;
 }
 
-.github-button a:hover, .project-button a:hover {
+.list-button a {
+    background-color: #d3414d;
+}
+
+.github-button a:hover, .project-button a:hover, .list-button a:hover {
     background-color: #e7e7e7;
+}
+
+.list-button a {
+    display: block;
+    width: 50%;
+    border-radius: 25px;
+    text-align: center;
+    padding: .7em;
+    margin-bottom: .5em;
+    font-weight: bold;
+    color: #1f1f1f;
+    text-decoration: none;
 }
 
 .github-button a, .project-button a {

@@ -20,6 +20,11 @@ class ProjectType extends AbstractType
                 'attr' => array(
                     'placeholder' => 'Nom du projet'
                 )])
+            ->add('presentation', null, [
+                'label' => ' ',
+                'attr' => array(
+                    'placeholder' => 'Présentation du projet'
+                )])
             ->add('description', CKEditorType::class, [
                 'label' => 'Description du projet'
                 ])
