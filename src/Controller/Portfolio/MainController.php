@@ -2,6 +2,7 @@
 
 namespace App\Controller\Portfolio;
 
+use App\Repository\PortfolioProjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,15 +25,19 @@ class MainController extends AbstractController
     /**
      * @Route("/portfolio", name="projects")
      */
-    public function projects(): Response
+    public function projects(PortfolioProjectRepository $portfolioProjectRepository): Response
     {
+        $allProjects = $portfolioProjectRepository->findBy([], [
+            'created_at' => 'desc'
+        ]);
+
         return $this->render('site/main/projects.html.twig', [
-            'controller_name' => 'MainController',
+            'allProjects' => $allProjects,
         ]);
     }
 
     /**
-     * @Route("/portfolio/demo", name="details")
+     * @Route("/portfolio/{slug}", name="details")
      */
     public function details(): Response
     {

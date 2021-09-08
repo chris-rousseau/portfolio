@@ -63,6 +63,16 @@ class PortfolioProject
      */
     private $updated_at;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $screenshot2;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $screenshot3;
+
     public function __construct()
     {
         $this->created_at = new DateTimeImmutable();
@@ -178,6 +188,30 @@ class PortfolioProject
     public function setUpdatedAt(?\DateTimeImmutable $updated_at): self
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function getScreenshot2(): ?string
+    {
+        return $this->screenshot2;
+    }
+
+    public function setScreenshot2(?string $screenshot2): self
+    {
+        $this->screenshot2 = $screenshot2;
+
+        return $this;
+    }
+
+    public function getScreenshot3(): ?string
+    {
+        return $this->screenshot3;
+    }
+
+    public function setScreenshot3(?string $screenshot3): self
+    {
+        $this->screenshot3 = $screenshot3;
 
         return $this;
     }

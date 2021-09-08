@@ -53,6 +53,36 @@ class ProjectType extends AbstractType
                     ])
                 ],
             ])
+            ->add('screenshot2Img', FileType::class, [
+                'label' => 'Ajouter un deuxième screenshot',
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => 'Merci de téleverser une image au bon format.',
+                    ])
+                ],
+            ])
+            ->add('screenshot3Img', FileType::class, [
+                'label' => 'Ajouter un troisème screenshot',
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => 'Merci de téleverser une image au bon format.',
+                    ])
+                ],
+            ])
         ;
     }
 

@@ -26,30 +26,30 @@
                 <li>J'aime beaucoup les jeux-vidéo et la randonnée !</li>
             </ul>
             <p>
-                C'était rapide ! Si vous voulez en savoir plus, vous pouvez <a href="#">m'envoyer un message</a>.
+                C'était rapide ! Si vous voulez en savoir plus, vous pouvez <a href="{{ path('contact') }}">m'envoyer un message</a>.
             </p>
 		</article>
 	</main>
         <div class="presentation">
             <div class="bloc">
-                <a href="#"><img src="{{ asset('assets/img/') }}blog.png" alt="Illustration (logo) d'un blog"></a>
+                <a href="{{ path('blog_index') }}"><img src="{{ asset('assets/img/') }}blog.png" alt="Illustration (logo) d'un blog"></a>
                 <p>
                     Je ne suis pas un blogueur dans l'âme mais il faut avouer que c'est pratique pour partager des choses.<br>
-                    <a href="#">Et c'est un blog fait à la main !</a>
+                    <a href="{{ path('blog_index') }}">Et c'est un blog fait à la main !</a>
                 </p>
             </div>
             <div class="bloc">
                 <p>
                     C'est ici que je vous montre mon travail, ce sur quoi j'ai participé ou totalement fait moi-même.<br>
-                    <a href="">Voici mon portfolio !</a>
+                    <a href="{{ path('site_projects') }}">Voici mon portfolio !</a>
                 </p>
-                <a href="#"><img src="{{ asset('assets/img/') }}portfolio.png" alt="Illustration (logo) du portfolio" class="portfolio"></a>
+                <a href="{{ path('site_projects') }}"><img src="{{ asset('assets/img/') }}portfolio.png" alt="Illustration (logo) du portfolio" class="portfolio"></a>
             </div>
             <div class="bloc">
-                <a href="#"><img src="{{ asset('assets/img/') }}contact.png" alt="Illustration (logo) d'une enveloppe"></a>
+                <a href="{{ path('contact') }}"><img src="{{ asset('assets/img/') }}contact.png" alt="Illustration (logo) d'une enveloppe"></a>
                 <p>
                     Le moyen le plus simple et rapide pour m'envoyer un message ou une proposition d'embauche.<br>
-                    <a href="#">Un bon vieux mail à l'ancienne !</a>
+                    <a href="{{ path('contact') }}">Un bon vieux mail à l'ancienne !</a>
                 </p>
             </div>
         </div>

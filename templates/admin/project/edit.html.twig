@@ -52,6 +52,24 @@
 					{% if project.screenshot != null %}
 						<img src="{{ asset('uploads/screenshots/') }}{{ project.screenshot }}" width="500px" alt=""><br>
 					{% endif %}
+
+					{{ form_label(form.screenshot2Img) }}
+						{% if form_errors(form.screenshot2Img) != null %}
+							<div class="form-error">{{ form_errors(form.screenshot2Img) }}</div>
+						{% endif %}
+					{{ form_widget(form.screenshot2Img, { 'attr': {'class': 'mt-2 mb-2'} }) }}<br>
+					{% if project.screenshot2 != null %}
+						<img src="{{ asset('uploads/screenshots/') }}{{ project.screenshot2 }}" width="500px" alt=""><br>
+					{% endif %}
+
+					{{ form_label(form.screenshot3Img) }}
+						{% if form_errors(form.screenshot3Img) != null %}
+							<div class="form-error">{{ form_errors(form.screenshot3Img) }}</div>
+						{% endif %}
+					{{ form_widget(form.screenshot3Img, { 'attr': {'class': 'mt-2 mb-2'} }) }}<br>
+					{% if project.screenshot3 != null %}
+						<img src="{{ asset('uploads/screenshots/') }}{{ project.screenshot3 }}" width="500px" alt=""><br>
+					{% endif %}
 					
 					<button type="submit" class="btn btn-success mt-2"><i class="fas fa-check"></i> Editer le projet</button> <a class="btn btn-info mt-2" href="{{ path('admin_project_list') }}" role="button"><i class="fas fa-long-arrow-alt-left"></i> Revenir à la liste</a>
 					{{ form_end(form) }}

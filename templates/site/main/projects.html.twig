@@ -7,29 +7,19 @@
 {% block body %}
         <div class="bloc-project">
             <h1>Mes réalisations</h1>
-            <div class="project">
-            <a href="#"><img src="https://data.1freewallpapers.com/download/artistic-retrowave-sunrise-vaporwave-1024x576.jpg" alt="Image du projet"></a>
-                <div>
-                    <h2><a href="#">CryptoConvert</a></h2>
-                    <p>
-                        Convertisseur de $/€ vers quelques cryptomonnaies, en utilisant l'API de Binance.
-                    </p>
-                    <div class="info">
-                        <a href="#">+ d'infos</a>
+            {% for project in allProjects %}
+                <div class="project">
+                <a href="{{ path('site_details', {slug : project.slug}) }}"><img src="{{ asset('uploads/screenshots/') }}{{ project.screenshot }}" alt="Capture d'écran du projet {{ project.name }}"></a>
+                    <div>
+                        <h2><a href="{{ path('site_details', {slug : project.slug}) }}">{{ project.name }}</a></h2>
+
+                        {{ project.description|striptags|slice(0, 200) ~ '...' }}
+
+                        <div class="info">
+                            <a href="{{ path('site_details', {slug : project.slug}) }}">+ d'infos</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="project">
-            <a href="#"><img src="https://data.1freewallpapers.com/download/artistic-retrowave-sunrise-vaporwave-1024x576.jpg" alt="Image du projet"></a>
-                <div>
-                    <h2><a href="#">Ce site</a></h2>
-                    <p>
-                        Regroupant le portfolio, le blog, enfin tout le site. Ne voulant pas utiliser Wordpress pour m'entraîner et pratiquer.
-                    </p>
-                    <div class="info">
-                        <a href="#">+ d'infos</a>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
 {% endblock %}

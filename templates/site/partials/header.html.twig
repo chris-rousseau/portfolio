@@ -3,11 +3,11 @@
 		<div class="header-background"></div>
 		<div class="header-background2"></div>
 		<div class="left-logo">
-			<a href="{{ path('blog_index') }}"><img src="{{ asset('/assets/img/coffee-cup.png') }}" alt="Logo du site (gobelet de café)"></a>
+			<a href="{{ path('site_index') }}"><img src="{{ asset('/assets/img/coffee-cup.png') }}" alt="Logo du site (gobelet de café)"></a>
 		</div>
 		<div class="right-logo">
 			<p class="text-logo">
-				<a href="{{ path('blog_index') }}">chris.dev</a>
+				<a href="{{ path('site_index') }}">chris.dev</a>
 			</p>
 			<p>Du café et des lignes de code</p>
 		</div>
@@ -15,8 +15,8 @@
 	<nav>
 		<ul>
 			<li><a href="{{ path('blog_index') }}">Blog</a></li>
-			<li><a href="#">Portfolio</a></li>
-			<li><a href="#">Contact</a></li>
+			<li><a href="{{ path('site_projects') }}">Portfolio</a></li>
+			<li><a href="{{ path('contact') }}">Contact</a></li>
 		</ul>
 	</nav>
 </div>

@@ -48,7 +48,19 @@
 						{% if form_errors(form.screenshotImg) != null %}
 							<div class="form-error">{{ form_errors(form.screenshotImg) }}</div>
 						{% endif %}
-					{{ form_widget(form.screenshotImg, { 'attr': {'class': 'mt-4 mb-4'} }) }}<br>
+					{{ form_widget(form.screenshotImg, { 'attr': {'class': 'mt-4 mb-2'} }) }}<br>
+
+					{{ form_label(form.screenshot2Img) }}
+						{% if form_errors(form.screenshot2Img) != null %}
+							<div class="form-error">{{ form_errors(form.screenshot2Img) }}</div>
+						{% endif %}
+					{{ form_widget(form.screenshot2Img, { 'attr': {'class': 'mt-2 mb-2'} }) }}<br>
+
+					{{ form_label(form.screenshot3Img) }}
+						{% if form_errors(form.screenshot3Img) != null %}
+							<div class="form-error">{{ form_errors(form.screenshot3Img) }}</div>
+						{% endif %}
+					{{ form_widget(form.screenshot3Img, { 'attr': {'class': 'mt-2 mb-2'} }) }}<br>
 					
 					<button type="submit" class="btn btn-success mt-2"><i class="fas fa-check"></i> Ajouter le projet</button> <a class="btn btn-info mt-2" href="{{ path('admin_project_list') }}" role="button"><i class="fas fa-long-arrow-alt-left"></i> Revenir à la liste</a>
 					{{ form_end(form) }}

@@ -55,6 +55,18 @@ class ProjectController extends AbstractController
                 $project->setScreenshot($screenshot);
             }
 
+            $screenshot2 = $upload->uploadImg($form, 'screenshot2Img');
+
+            if ($screenshot2 !== null) {
+                $project->setScreenshot2($screenshot2);
+            }
+
+            $screenshot3 = $upload->uploadImg($form, 'screenshot3Img');
+
+            if ($screenshot3 !== null) {
+                $project->setScreenshot3($screenshot3);
+            }
+
             $slug = $slugger->slug($project->getName());
             $project->setSlug(strtolower($slug));
 
@@ -88,6 +100,18 @@ class ProjectController extends AbstractController
 
             if ($screenshot !== null) {
                 $portfolioProject->setScreenshot($screenshot);
+            }
+
+            $screenshot2 = $upload->uploadImg($form, 'screenshot2Img');
+
+            if ($screenshot2 !== null) {
+                $portfolioProject->setScreenshot2($screenshot2);
+            }
+
+            $screenshot3 = $upload->uploadImg($form, 'screenshot3Img');
+
+            if ($screenshot3 !== null) {
+                $portfolioProject->setScreenshot3($screenshot3);
             }
 
             $slug = $slugger->slug($portfolioProject->getName());
