@@ -154,6 +154,17 @@ h2::before {
     margin-bottom: 0;
 }
 
+.project-single li {
+    padding-left: 1em;
+    list-style-type: disc;
+    list-style-position: inside;
+    line-height: 1.5em;
+}
+
+.project-single ul {
+    margin-bottom: 1em;
+}
+
 .screenshots {
     margin: 1em 0;
 }
@@ -219,12 +230,17 @@ h2::before {
     text-decoration: none;
 }
 
+.tags {
+    margin-top: .2em;
+}
+
 .tag {
-    background-color: #fff;
+    background-color: #e7e7e7;
     border-radius: 5px;
     color: #272727;
     padding: .3em .4em;
     margin-right: .2em;
+    line-height: 2.3em;
 }
 
 @media (min-width: 43.750em) {

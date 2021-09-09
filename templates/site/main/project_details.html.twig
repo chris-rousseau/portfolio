@@ -16,11 +16,13 @@
                 <h2>Description</h2>
                 {{ project.description|raw }}
                 <h2>Technologies utilisées</h2>
-                <p>
-                    {% for tags in project.tags %}
-                        <span class="tag">{{ tags.name }}</span>
-                    {% endfor %}
-                </p>
+                <div class="tags">
+                    <p>
+                        {% for tags in project.tags %}
+                            <span class="tag">{{ tags.name }}</span>
+                        {% endfor %}
+                    </p>
+                </div>
             </div>
             <div class="links">
                 {% if project.github != null %}
