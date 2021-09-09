@@ -1,7 +1,11 @@
 {% extends 'base_blog.html.twig' %}
 
 {% block title %}
-	{{ parent() }}
+	Blog{{ parent() }}
+{% endblock %}
+
+{% block description %}
+<meta name="description" content="Blog qui me permet de vous partager mes coups de coeur où mes galères" />
 {% endblock %}
 
 {% block body %}

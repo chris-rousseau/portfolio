@@ -36,10 +36,6 @@ class ProjectType extends AbstractType
                 'class' => Tags::class,
                 'multiple' => true,
                 'choice_label' => 'name',
-                'query_builder' => function(EntityRepository $er) {
-                    return $er->createQueryBuilder('t')
-                        ->orderBy('t.name', 'asc');
-                },
                 'by_reference' => false,
                 'attr' => [
                     'class' => 'select-tags'

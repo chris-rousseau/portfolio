@@ -1,7 +1,11 @@
 {% extends 'base_portfolio.html.twig' %}
 
 {% block title %}
-	{{ parent() }}
+	{{ project.name }}{{ parent() }}
+{% endblock %}
+
+{% block description %}
+<meta name="description" content="{{ project.presentation }}" />
 {% endblock %}
 
 {% block body %}

@@ -1,7 +1,11 @@
 {% extends 'base_blog.html.twig' %}
 
 {% block title %}
-	{{ parent() }}
+	{{ post.title }}{{ parent() }}
+{% endblock %}
+
+{% block description %}
+<meta name="description" content="{{ post.content|slice(0, 145)|striptags }}{% if post.content|length > 145 %}...{% endif %}" />
 {% endblock %}
 
 {% block body %}

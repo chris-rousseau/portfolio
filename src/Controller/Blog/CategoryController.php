@@ -34,6 +34,7 @@ class CategoryController extends AbstractController
 
         return $this->render('blog/category/index.html.twig', [
             'allPosts' => $pagination,
+            'category' => $blogCategory
         ]);
     }
 }
