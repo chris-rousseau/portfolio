@@ -7,6 +7,7 @@ use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=BlogPostRepository::class)
@@ -22,11 +23,17 @@ class BlogPost
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank(message="Il faut un titre")
+     * @Assert\Length(
+     *      max = 100,
+     *      maxMessage = "La longueur maximale de votre titre doit être de {{ limit }} caractères."
+     * )
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="N'oubliez pas le contenu de l'article")
      */
     private $content;
 
@@ -57,7 +64,7 @@ class BlogPost
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity=BlogComment::class, mappedBy="post")
+     * @ORM\OneToMany(targetEntity=BlogComment::class, mappedBy="post", cascade={"remove"})
      */
     private $blogComments;
 

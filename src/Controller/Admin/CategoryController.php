@@ -18,25 +18,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class CategoryController extends AbstractController
 {
     /**
-     * @Route("", name="list")
-     */
-    public function index(BlogCategoryRepository $blogCategoryRepository, PaginatorInterface $paginator, Request $request): Response
-    {
-        $allCategories = $blogCategoryRepository->findAll();
-
-        $pagination = $paginator->paginate(
-            $allCategories,
-            $request->query->getInt('page', 1),
-            10
-        );
-
-        return $this->render('admin/category/list.html.twig', [
-            'allCategories' => $pagination,
-        ]);
-    }
-
-    /**
-     * @Route("/add", name="add")
+     * @Route("/add", name="add", methods={"GET","POST"})
      */
     public function add(Request $request, SluggerInterface $slugger): Response
     {
@@ -64,6 +46,23 @@ class CategoryController extends AbstractController
         return $this->render('admin/category/add.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/delete-{id}", name="delete", requirements={"id"="\d+"})
+     */
+    public function delete(BlogCategory $blogCategory): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($blogCategory);
+        $em->flush();
+
+        $this->addFlash(
+            'danger',
+            'La catégorie à bien été suprimée !'
+        );
+
+        return $this->redirectToRoute('admin_category_list');
     }
 
     /**
@@ -96,19 +95,20 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/delete-{id}", name="delete", requirements={"id"="\d+"}, methods={"GET","POST"})
+     * @Route("", name="list", methods={"GET"})
      */
-    public function delete(BlogCategory $blogCategory): Response
+    public function list(BlogCategoryRepository $blogCategoryRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($blogCategory);
-        $em->flush();
+        $allCategories = $blogCategoryRepository->findAll();
 
-        $this->addFlash(
-            'danger',
-            'La catégorie à bien été suprimée !'
+        $pagination = $paginator->paginate(
+            $allCategories,
+            $request->query->getInt('page', 1),
+            10
         );
 
-        return $this->redirectToRoute('admin_category_list');
+        return $this->render('admin/category/list.html.twig', [
+            'allCategories' => $pagination,
+        ]);
     }
 }

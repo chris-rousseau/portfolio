@@ -19,26 +19,6 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class ProjectController extends AbstractController
 {
     /**
-     * @Route("", name="list", methods={"GET"})
-     */
-    public function list(PortfolioProjectRepository $portfolioProjectRepository, PaginatorInterface $paginator, Request $request): Response
-    {
-        $allProjects = $portfolioProjectRepository->findBy([], [
-            'created_at' => 'desc'
-        ]);
-
-        $pagination = $paginator->paginate(
-            $allProjects,
-            $request->query->getInt('page', 1),
-            10
-        );
-
-        return $this->render('admin/project/list.html.twig', [
-            'allProjects' => $pagination,
-        ]);
-    }
-
-    /**
      * @Route("/add", name="add", methods={"GET","POST"})
      */
     public function add(Request $request, SluggerInterface $slugger, UploadImage $upload): Response
@@ -85,6 +65,23 @@ class ProjectController extends AbstractController
         return $this->render('admin/project/add.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/delete-{id}", name="delete", requirements={"id"="\d+"})
+     */
+    public function delete(PortfolioProject $portfolioProject): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($portfolioProject);
+        $em->flush();
+
+        $this->addFlash(
+            'danger',
+            'Le projet à bien été supprimé !'
+        );
+
+        return $this->redirectToRoute('admin_project_list');
     }
 
     /**
@@ -136,19 +133,22 @@ class ProjectController extends AbstractController
     }
 
     /**
-     * @Route("/delete-{id}", name="delete", requirements={"id"="\d+"}, methods={"GET","POST"})
+     * @Route("", name="list", methods={"GET"})
      */
-    public function delete(PortfolioProject $portfolioProject): Response
+    public function list(PortfolioProjectRepository $portfolioProjectRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($portfolioProject);
-        $em->flush();
+        $allProjects = $portfolioProjectRepository->findBy([], [
+            'created_at' => 'desc'
+        ]);
 
-        $this->addFlash(
-            'danger',
-            'Le projet à bien été supprimé !'
+        $pagination = $paginator->paginate(
+            $allProjects,
+            $request->query->getInt('page', 1),
+            10
         );
 
-        return $this->redirectToRoute('admin_project_list');
+        return $this->render('admin/project/list.html.twig', [
+            'allProjects' => $pagination,
+        ]);
     }
 }

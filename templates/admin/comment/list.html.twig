@@ -21,7 +21,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ comment.name }} <span class="title-post-comment"> - {{ comment.post.title }}</span></h5>
-                                    <p class="card-text">{{ comment.content|slice(0, 60) }}...</p>
+                                    <p class="card-text">{{ comment.content|slice(0, 60)|striptags }}...</p>
                                     <!-- Button trigger modal -->
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ comment.id }}">
                                     <i class="far fa-eye"></i> Lire le commentaire

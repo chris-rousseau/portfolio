@@ -3,7 +3,6 @@
 namespace App\Controller\Admin;
 
 use App\Entity\BlogPost;
-use App\Form\CommentType;
 use App\Form\PostType;
 use App\Repository\BlogCommentRepository;
 use App\Repository\BlogPostRepository;
@@ -58,26 +57,20 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("", name="list", methods={"GET"})
+     * @Route("/delete-{id}", name="delete", requirements={"id"="\d+"})
      */
-    public function list(BlogPostRepository $blogPostRepository, BlogCommentRepository $blogCommentRepository, PaginatorInterface $paginator, Request $request): Response
+    public function delete(BlogPost $blogPost): Response
     {
-        $allPosts = $blogPostRepository->findBy([], [
-            'created_at' => 'desc'
-        ]);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($blogPost);
+        $em->flush();
 
-        $pagination = $paginator->paginate(
-            $allPosts,
-            $request->query->getInt('page', 1),
-            10
+        $this->addFlash(
+            'danger',
+            'L\'article bien été supprimé !'
         );
 
-        $allComments = $blogCommentRepository->findAll();
-
-        return $this->render('admin/blog/list.html.twig', [
-            'allPosts' => $pagination,
-            'allComments' => $allComments,
-        ]);
+        return $this->redirectToRoute('admin_blog_list');
     }
 
     /**
@@ -111,19 +104,25 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("/delete-{id}", name="delete", requirements={"id"="\d+"}, methods={"GET","POST"})
+     * @Route("", name="list", methods={"GET"})
      */
-    public function delete(BlogPost $blogPost, Request $request): Response
+    public function list(BlogPostRepository $blogPostRepository, BlogCommentRepository $blogCommentRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($blogPost);
-        $em->flush();
+        $allPosts = $blogPostRepository->findBy([], [
+            'created_at' => 'desc'
+        ]);
 
-        $this->addFlash(
-            'danger',
-            'L\'article bien été supprimé !'
+        $pagination = $paginator->paginate(
+            $allPosts,
+            $request->query->getInt('page', 1),
+            10
         );
 
-        return $this->redirectToRoute('admin_blog_list');
+        $allComments = $blogCommentRepository->findAll();
+
+        return $this->render('admin/blog/list.html.twig', [
+            'allPosts' => $pagination,
+            'allComments' => $allComments,
+        ]);
     }
 }

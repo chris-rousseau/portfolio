@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends AbstractController
 {
     /**
-     * @Route("", name="index")
+     * @Route("", name="index", methods={"GET"})
      */
     public function index(BlogPostRepository $blogPostRepository, Request $request, PaginatorInterface $paginator): Response
     {

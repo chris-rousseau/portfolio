@@ -16,6 +16,23 @@ use Symfony\Component\Routing\Annotation\Route;
 class CommentController extends AbstractController
 {
     /**
+     * @Route("/delete-{id}", name="delete", requirements={"id"="\d+"})
+     */
+    public function delete(BlogComment $blogComment): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($blogComment);
+        $em->flush();
+
+        $this->addFlash(
+            'danger',
+            'Le commentaire à bien été supprimé !'
+        );
+
+        return $this->redirectToRoute('admin_comment_list');
+    }
+
+    /**
      * @Route("", name="list", methods={"GET"})
      */
     public function list(BlogCommentRepository $blogCommentRepository, PaginatorInterface $paginator, Request $request): Response
@@ -33,22 +50,5 @@ class CommentController extends AbstractController
         return $this->render('admin/comment/list.html.twig', [
             'allComments' => $pagination,
         ]);
-    }
-
-    /**
-     * @Route("/delete-{id}", name="delete", requirements={"id"="\d+"}, methods={"GET","POST"})
-     */
-    public function delete(BlogComment $blogComment): Response
-    {
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($blogComment);
-        $em->flush();
-
-        $this->addFlash(
-            'danger',
-            'Le commentaire à bien été supprimé !'
-        );
-
-        return $this->redirectToRoute('admin_comment_list');
     }
 }

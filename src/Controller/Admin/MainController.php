@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends AbstractController
 {
     /**
-     * @Route("", name="dashboard")
+     * @Route("", name="dashboard", methods={"GET"})
      */
     public function dashboard(BlogPostRepository $blogPostRepository, BlogCommentRepository $blogCommentRepository, BlogCategoryRepository $blogCategoryRepository): Response
     {

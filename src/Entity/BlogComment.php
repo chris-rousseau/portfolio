@@ -21,7 +21,7 @@ class BlogComment
 
     /**
      * @ORM\Column(type="string", length=50)
-     * @Assert\NotBlank(message="Merci de renseigner votre pseudo")
+     * @Assert\NotBlank(message="N'oubliez pas votre pseudo")
      * @Assert\Length(
      *      max = 50,
      *      maxMessage = "La longueur maximale de votre pseudo doit être de {{ limit }} caractères."
@@ -31,7 +31,7 @@ class BlogComment
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\NotBlank(message="Merci d'ajouter votre message")
+     * @Assert\NotBlank(message="N'oubliez pas votre message")
      * @Assert\Length(
      *      max = 3000,
      *      maxMessage = "La longueur maximale de votre message doit être de {{ limit }} caractères."

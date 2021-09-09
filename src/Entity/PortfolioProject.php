@@ -7,6 +7,7 @@ use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PortfolioProjectRepository::class)
@@ -22,11 +23,17 @@ class PortfolioProject
 
     /**
      * @ORM\Column(type="string", length=150)
+     * @Assert\NotBlank(message="Il faut un nom")
+     * @Assert\Length(
+     *      max = 150,
+     *      maxMessage = "La longueur maximale de votre nom doit être de {{ limit }} caractères."
+     * )
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Il faut une description")
      */
     private $description;
 
@@ -72,6 +79,7 @@ class PortfolioProject
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Il faut une présentation")
      */
     private $presentation;
 

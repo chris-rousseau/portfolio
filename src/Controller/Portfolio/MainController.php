@@ -16,7 +16,18 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends AbstractController
 {
     /**
-     * @Route("", name="index")
+     * @Route("/portfolio/{slug}", name="details", methods={"GET"})
+     */
+    public function details(PortfolioProject $portfolioProject): Response
+    {
+
+        return $this->render('site/main/project_details.html.twig', [
+            'project' => $portfolioProject,
+        ]);
+    }
+
+    /**
+     * @Route("", name="index", methods={"GET"})
      */
     public function index(): Response
     {
@@ -26,7 +37,7 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/portfolio", name="projects")
+     * @Route("/portfolio", name="projects", methods={"GET"})
      */
     public function projects(PortfolioProjectRepository $portfolioProjectRepository, Request $request, PaginatorInterface $paginator): Response
     {
@@ -42,17 +53,6 @@ class MainController extends AbstractController
 
         return $this->render('site/main/projects.html.twig', [
             'allProjects' => $pagination,
-        ]);
-    }
-
-    /**
-     * @Route("/portfolio/{slug}", name="details")
-     */
-    public function details(PortfolioProject $portfolioProject): Response
-    {
-
-        return $this->render('site/main/project_details.html.twig', [
-            'project' => $portfolioProject,
         ]);
     }
 }

@@ -11,7 +11,7 @@ fos_ck_editor:
             language: fr
         comment_config:
             toolbar: "comment_bar"
-            uiColor: "#272727"
+            uiColor: "#000000"
     toolbars:
         configs:
             comment_bar: []

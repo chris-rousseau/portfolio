@@ -18,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PostController extends AbstractController
 {
     /**
-     * @Route("{slug}", name="single")
+     * @Route("{slug}", name="single", methods={"GET","POST"})
      */
     public function single(Request $request, PaginatorInterface $paginator, BlogPost $blogPost, BlogCommentRepository $blogCommentRepository): Response
     {

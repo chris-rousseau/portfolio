@@ -11,12 +11,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/blog/category/", name="blog_category_")
+ * @Route("/blog/categorie/", name="blog_category_")
  */
 class CategoryController extends AbstractController
 {
     /**
-     * @Route("{slug}", name="list")
+     * @Route("{slug}", name="list", methods={"GET"})
      */
     public function list(BlogPostRepository $blogPostRepository, BlogCategory $blogCategory, PaginatorInterface $paginator, Request $request): Response
     {
