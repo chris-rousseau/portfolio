@@ -16,6 +16,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends AbstractController
 {
     /**
+     * @Route("/credits", name="credits", methods={"GET"})
+     */
+    public function credits(): Response
+    {
+        return $this->render('site/main/credits.html.twig');
+    }
+
+    /**
      * @Route("/portfolio/{slug}", name="details", methods={"GET"})
      */
     public function details(PortfolioProject $portfolioProject): Response

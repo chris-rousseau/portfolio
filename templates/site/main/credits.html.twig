@@ -1,0 +1,32 @@
+{% extends 'base_portfolio.html.twig' %}
+
+{% block title %}
+	Crédits{{ parent() }}
+{% endblock %}
+
+{% block description %}
+<meta name="description" content="La page des crédits pour remercier les gens qui m'ont aidé à réaliser ce site" />
+{% endblock %}
+
+{% block body %}
+    <div class="details">
+        <div class="bloc-details">
+            <h1>Crédits</h1>
+            <div class="project-single">
+                <h2>Images utilisées</h2>
+                <p>
+                    Toutes les illustrations du site proviennent de <a href="https://www.flaticon.com/" target="_blank">flaticon</a>. En voici le détail :
+                </p>
+                <ul>
+                    <li><a href="https://www.flaticon.com/free-icon/coffee-cup_3127336" target="_blank">La tasse de café</a></li>
+                    <li><a href="https://www.flaticon.com/free-icon/blogging_1289299" target="_blank">L'illustration du blog</a></li>
+                    <li><a href="https://www.flaticon.com/free-icon/to-do-list_1289280" target="_blank">L'illustration du portfolio</a></li>
+                    <li><a href="https://www.flaticon.com/free-icon/love-letter_1289277" target="_blank">L'illustration de la page contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="screenshots">
+            <img src="{{ asset('assets/img/') }}flaticon.png" alt="Capture d'écran du site Flaticon">
+        </div>
+    </div>
+{% endblock %}
