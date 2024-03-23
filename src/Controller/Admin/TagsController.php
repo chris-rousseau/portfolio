@@ -14,6 +14,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TagsController extends AbstractController
 {
+    public function __construct(
+        protected EntityManagerInterface $em
+    )
+    {
+    }
+
     /**
      * @Route("/tags/add/ajax/{label}", name="admin_tags_add", methods={"POST"})
      */
@@ -36,9 +42,8 @@ class TagsController extends AbstractController
      */
     public function delete(Tags $tags): Response
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($tags);
-        $em->flush();
+        $this->em->remove($tags);
+        $this->em->flush();
 
         $this->addFlash(
             'danger',

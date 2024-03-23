@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\BlogCategory;
 use App\Form\CategoryType;
 use App\Repository\BlogCategoryRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,6 +18,12 @@ use Symfony\Component\String\Slugger\SluggerInterface;
  */
 class CategoryController extends AbstractController
 {
+    public function __construct(
+        protected EntityManagerInterface $em
+    )
+    {
+    }
+
     /**
      * @Route("/add", name="add", methods={"GET","POST"})
      */
@@ -31,9 +38,8 @@ class CategoryController extends AbstractController
             $slug = $slugger->slug($category->getName());
             $category->setSlug(strtolower($slug));
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($category);
-            $em->flush();
+            $this->em->persist($category);
+            $this->em->flush();
 
             $this->addFlash(
                 'success',
@@ -53,9 +59,8 @@ class CategoryController extends AbstractController
      */
     public function delete(BlogCategory $blogCategory): Response
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($blogCategory);
-        $em->flush();
+        $this->em->remove($blogCategory);
+        $this->em->flush();
 
         $this->addFlash(
             'danger',
@@ -77,9 +82,8 @@ class CategoryController extends AbstractController
             $slug = $slugger->slug($blogCategory->getName());
             $blogCategory->setSlug(strtolower($slug));
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($blogCategory);
-            $em->flush();
+            $this->em->persist($blogCategory);
+            $this->em->flush();
 
             $this->addFlash(
                 'success',

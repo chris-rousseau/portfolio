@@ -6,6 +6,7 @@ use App\Entity\BlogComment;
 use App\Entity\BlogPost;
 use App\Form\CommentType;
 use App\Repository\BlogCommentRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,6 +18,12 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class PostController extends AbstractController
 {
+    public function __construct(
+        protected EntityManagerInterface $em
+    )
+    {
+    }
+
     /**
      * @Route("{slug}", name="single", methods={"GET","POST"})
      */
@@ -36,9 +43,8 @@ class PostController extends AbstractController
 
         // add +1 to views count
         $blogPost->setViews($blogPost->getViews() + 1);
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($blogPost);
-        $em->flush();
+        $this->em->persist($blogPost);
+        $this->em->flush();
 
         $comment = new BlogComment();
         $form = $this->createForm(CommentType::class, $comment);
@@ -47,8 +53,8 @@ class PostController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $comment->setPost($blogPost);
 
-            $em->persist($comment);
-            $em->flush();
+            $this->em->persist($comment);
+            $this->em->flush();
 
             $this->addFlash(
                 'success',

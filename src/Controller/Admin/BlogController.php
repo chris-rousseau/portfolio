@@ -7,6 +7,7 @@ use App\Form\PostType;
 use App\Repository\BlogCommentRepository;
 use App\Repository\BlogPostRepository;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,6 +20,12 @@ use Symfony\Component\String\Slugger\SluggerInterface;
  */
 class BlogController extends AbstractController
 {
+    public function __construct(
+        protected EntityManagerInterface $em
+    )
+    {
+    }
+
     /**
      * @Route("/add", name="add", methods={"GET","POST"})
      */
@@ -38,9 +45,8 @@ class BlogController extends AbstractController
             ]);
             $post->setUser($user);
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($post);
-            $em->flush();
+            $this->em->persist($post);
+            $this->em->flush();
 
             $this->addFlash(
                 'success',
@@ -61,9 +67,8 @@ class BlogController extends AbstractController
      */
     public function delete(BlogPost $blogPost): Response
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($blogPost);
-        $em->flush();
+        $this->em->remove($blogPost);
+        $this->em->flush();
 
         $this->addFlash(
             'danger',
@@ -85,9 +90,8 @@ class BlogController extends AbstractController
             $slug = $slugger->slug($blogPost->getTitle());
             $blogPost->setSlug(strtolower($slug));
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($blogPost);
-            $em->flush();
+            $this->em->persist($blogPost);
+            $this->em->flush();
 
             $this->addFlash(
                 'success',
